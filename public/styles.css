@@ -1,72 +1,100 @@
+@font-face {
+  font-family: "Alba";
+  src: url("../src/fonts/ALBAS___.eot");
+  src: url("../src/fonts/ALBAS___.woff") format("woff"),
+    url("../src/fonts/ALBAS___.woff2") format("woff2"),
+    url("../src/fonts/ALBAS___.svg") format("svg"),
+    url("../src/fonts/ALBAS___.ttf") format("truetype");
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+body {
+  background-color: teal;
+}
+.BeginningHeader {
+  font-family: "Alba";
+  font-size: 4rem;
+  text-transform: uppercase;
+}
+/* GAME COMPONENT STYLES*/
+.row1 {
+}
 .cont {
   height: 100vh;
   width: 100vw;
   background-color: cornflowerblue;
 }
-.row1 {
-}
-
 .row2 {
   height: 40%;
   width: 55%;
   margin: auto;
 }
+
+table {
+  background-color: white;
+}
+
+td {
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+}
+
 .square1 {
-  height: 80px;
-  width: 80px;
-  background-color: #555;
+  height: 125px;
+  width: 125px;
+  /* background-color: #555; */
 }
 .square2 {
-  height: 80px;
-  width: 80px;
+  height: 120px;
+  width: 120px;
   background-color: #555;
 }
 
 .square3 {
-  height: 80px;
-  width: 80px;
+  height: 120px;
+  width: 120px;
   background-color: #555;
 }
 
 .square4 {
-  height: 80px;
-  width: 80px;
+  height: 120px;
+  width: 120px;
   background-color: #555;
 }
 
 .square5 {
-  height: 80px;
-  width: 80px;
+  height: 120px;
+  width: 120px;
   background-color: #555;
 }
 
 .square6 {
-  height: 80px;
-  width: 80px;
+  height: 120px;
+  width: 120px;
   background-color: #555;
 }
 
 .square7 {
-  height: 80px;
-  width: 80px;
+  height: 120px;
+  width: 120px;
   background-color: #555;
 }
 
 .square8 {
-  height: 80px;
-  width: 80px;
+  height: 120px;
+  width: 120px;
   background-color: #555;
 }
 
 .square9 {
-  height: 80px;
-  width: 80px;
+  height: 120px;
+  width: 120px;
   background-color: #555;
 }
 
