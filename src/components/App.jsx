@@ -8,7 +8,7 @@ function App() {
   }
   return (
     <div>
-      <p className="BeginningHeader">Colour Blind</p>
+      <p className="bHeader">Colour Blind</p>
 
       {reveal && <Game />}
     </div>

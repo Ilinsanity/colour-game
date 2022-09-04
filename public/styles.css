@@ -1,10 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap");
 @font-face {
-  font-family: "Alba";
-  src: url("../src/fonts/ALBAS___.eot");
-  src: url("../src/fonts/ALBAS___.woff") format("woff"),
-    url("../src/fonts/ALBAS___.woff2") format("woff2"),
-    url("../src/fonts/ALBAS___.svg") format("svg"),
-    url("../src/fonts/ALBAS___.ttf") format("truetype");
+  font-family: ALBAS;
+  src: url("../src/fonts/ALBAS.eot");
+  src: url("../src/fonts/ALBAS.eot") format("embedded-opentype"),
+    url("../src/fonts/ALBAS.woff2") format("woff2"),
+    url("../src/fonts/ALBAS.woff") format("woff"),
+    url("../src/fonts/ALBAS.ttf") format("truetype"),
+    url("../src/fonts/ALBAS.svg#ALBAS") format("svg");
+}
+
+@font-face {
+  font-family: "JKAbodeDemo";
+  src: url("../src/fonts/JKAbodeDemo.eot");
+  src: url("../src/fonts/JKAbodeDemo.eot") format("embedded-opentype"),
+    url("../src/fonts/JKAbodeDemo.woff2") format("woff2"),
+    url("../src/fonts/JKAbodeDemo.woff") format("woff"),
+    url("../src/fonts/JKAbodeDemo.ttf") format("truetype"),
+    url("../src/fonts/JKAbodeDemo.svg#JKAbodeDemo") format("svg");
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Anurati-Regular";
+  src: url("../src/fonts/Anurati-Regular.eot");
+  src: url("../src/fonts/Anurati-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../src/fonts/Anurati-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
@@ -16,10 +41,11 @@
 body {
   background-color: teal;
 }
-.BeginningHeader {
-  font-family: "Alba";
-  font-size: 4rem;
-  text-transform: uppercase;
+
+.bHeader {
+  font-family: ALBAS, sans-serif;
+
+  font-size: 5rem;
 }
 /* GAME COMPONENT STYLES*/
 .row1 {
