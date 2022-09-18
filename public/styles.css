@@ -7,19 +7,50 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: Bariol;
+  src: url(../src/fonts/bariol_regular-webfont.eot);
+  src: url(../src/fonts/JKAbodeDemo.woff) format("woff"),
+    url(../src/fonts/bariol_regular-webfont.woff2) format("woff2"),
+    url(../src/fonts/bariol_regular-webfont.svg) format("svg"),
+    url(../src/fonts/bariol_regular-webfont.ttf) format("truetype");
+}
+
 body {
 }
 
 .landing {
   text-align: center;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
 }
 
 .bHeader {
   font-family: "Lato", sans-serif;
-
+  text-transform: uppercase;
   font-size: 6rem;
   /* text-decoration: underline black 7px; */
 }
+
+.Lbutton {
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border-radius: 10%;
+  border-color: white;
+  color: white;
+  -webkit-transition: background-color 0.6s;
+  transition: background-color 0.6s;
+}
+
+.Lbutton:hover {
+  background-color: white;
+  color: black;
+}
+
 /* GAME COMPONENT STYLES*/
 .row1 {
 }
@@ -109,4 +140,36 @@ td {
 table {
   margin: 0 auto;
   border-spacing: 30px;
+}
+
+/* Sets the containers height and width */
+.base-timer {
+  position: relative;
+  height: 300px;
+  width: 300px;
+}
+
+/* Removes SVG styling that would hide the time label */
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+/* The SVG path that displays the timer's progress */
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: grey;
+}
+
+.StartBcont {
+  text-align: center;
+}
+
+/* GAME OVER SCREEN*/
+
+.Gameovercont {
+  text-align: center;
+}
+.GameOverTitle {
+  font-size: 5rem;
 }

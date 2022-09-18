@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 
 function Game() {
-  const [c1, setC1] = useState("blue");
-  const [c2, setC2] = useState("red");
-  const [c3, setC3] = useState("purple");
-  const [c4, setC4] = useState("blue");
-  const [c5, setC5] = useState("blue");
-  const [c6, setC6] = useState("blue");
-  const [c7, setC7] = useState("blue");
-  const [c8, setC8] = useState("blue");
-  const [c9, setC9] = useState("blue");
+  const [c1, setC1] = useState("white");
+  const [c2, setC2] = useState("white");
+  const [c3, setC3] = useState("white");
+  const [c4, setC4] = useState("white");
+  const [c5, setC5] = useState("white");
+  const [c6, setC6] = useState("white");
+  const [c7, setC7] = useState("white");
+  const [c8, setC8] = useState("white");
+  const [c9, setC9] = useState("white");
 
   const [correct, setcorrect] = useState("c");
+  const [showgame, setshowgame] = useState(false);
+  const [showstart, setStart] = useState(true);
+  const [endgame, setend] = useState(false);
+  // const [cdown, setcdown] = useState(10);
 
+  const cdown = 10;
   const [level, setlevel] = useState(0);
   function shadeColor(color, percent) {
     var R = parseInt(color.substring(1, 3), 16);
@@ -34,7 +39,34 @@ function Game() {
     return "#" + RR + GG + BB;
   }
 
+  // function StartTimer(sec) {
+  //   var count = sec;
+  //   var IntervalID = setInterval(function () {
+  //     if (count < 0) {
+  //       clearInterval(IntervalID);
+  //       GameOver();
+  //     } else {
+  //       count--;
+  //       cdown = count;
+  //     }
+  //   }, 1000);
+  // }
+
+  function GameOver() {
+    setend(true);
+    setshowgame(false);
+    // setStart(false);
+  }
+
+  function restartGame() {
+    setlevel(0);
+    setend(false);
+    setBg();
+  }
   function setBg() {
+    setshowgame(true);
+    setStart(false);
+    var shade = 10;
     // const randomBetween = (min, max) =>
     //   min + Math.floor(Math.random() * (max - min + 1));
     // const r = randomBetween(0, 255);
@@ -45,10 +77,29 @@ function Game() {
     const randomColor =
       "#" + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0");
     const randomsquare = Math.floor(Math.random() * 9);
-    console.log(randomColor);
-    console.log(randomsquare);
 
-    const answer = shadeColor(randomColor, 15);
+    var num = Math.random() <= 0.5 ? 1 : 2;
+    if (level <= 5) {
+      if (num == 1) {
+        shade = 50;
+      } else {
+        shade = -50;
+      }
+    } else if (level > 5 && level <= 10) {
+      if (num == 1) {
+        shade = 25;
+      } else {
+        shade = -25;
+      }
+    } else if (level > 10) {
+      if (num == 1) {
+        shade = 10;
+      } else {
+        shade = -10;
+      }
+    }
+
+    const answer = shadeColor(randomColor, shade);
     switch (randomsquare) {
       case 0:
         setC1(answer);
@@ -170,6 +221,7 @@ function Game() {
         setC9(randomColor);
         setcorrect("s3");
     }
+    // StartTimer(10);
   }
 
   const CheckA = (e) => {
@@ -179,81 +231,99 @@ function Game() {
       setBg();
       setlevel(level + 1);
     } else {
-      //end game screen
+      GameOver();
     }
   };
   return (
     <div>
-      <table>
-        <tr>
-          <td
-            className="square1"
-            id="s1"
-            style={{ backgroundColor: c1 }}
-            onClick={CheckA}
-          ></td>
-          <td
-            className="square2"
-            id="s2"
-            style={{ backgroundColor: c2 }}
-            onClick={CheckA}
-          ></td>
-          <td
-            className="square3"
-            id="s3"
-            style={{ backgroundColor: c3 }}
-            onClick={CheckA}
-          ></td>
-        </tr>
+      {endgame && (
+        <div className="Gameovercont">
+          <p className="GameOverTitle">GAME OVER</p>
 
-        <tr>
-          <td
-            className="square4"
-            id="s4"
-            style={{ backgroundColor: c4 }}
-            onClick={CheckA}
-          ></td>
-          <td
-            className="square5"
-            id="s5"
-            style={{ backgroundColor: c5 }}
-            onClick={CheckA}
-          ></td>
-          <td
-            className="square6"
-            id="s6"
-            style={{ backgroundColor: c6 }}
-            onClick={CheckA}
-          ></td>
-        </tr>
+          <p>Your Score: {level}</p>
 
-        <tr>
-          <td
-            className="square7"
-            id="s7"
-            style={{ backgroundColor: c7 }}
-            onClick={CheckA}
-          ></td>
-          <td
-            className="square8"
-            id="s8"
-            style={{ backgroundColor: c8 }}
-            onClick={CheckA}
-          ></td>
-          <td
-            className="square9"
-            id="s9"
-            style={{ backgroundColor: c9 }}
-            onClick={CheckA}
-          ></td>
-        </tr>
-      </table>
+          <button id="colourbutton" onClick={restartGame}>
+            Try Again
+          </button>
+        </div>
+      )}
+      {showgame && (
+        <table>
+          <tr>
+            <td
+              className="square1"
+              id="s1"
+              style={{ backgroundColor: c1 }}
+              onClick={CheckA}
+            ></td>
+            <td
+              className="square2"
+              id="s2"
+              style={{ backgroundColor: c2 }}
+              onClick={CheckA}
+            ></td>
+            <td
+              className="square3"
+              id="s3"
+              style={{ backgroundColor: c3 }}
+              onClick={CheckA}
+            ></td>
+          </tr>
 
-      <button id="colourbutton" onClick={setBg}>
-        Generate Random Colour
-      </button>
+          <tr>
+            <td
+              className="square4"
+              id="s4"
+              style={{ backgroundColor: c4 }}
+              onClick={CheckA}
+            ></td>
+            <td
+              className="square5"
+              id="s5"
+              style={{ backgroundColor: c5 }}
+              onClick={CheckA}
+            ></td>
+            <td
+              className="square6"
+              id="s6"
+              style={{ backgroundColor: c6 }}
+              onClick={CheckA}
+            ></td>
+          </tr>
 
-      <h1>LEVEL: {level}</h1>
+          <tr>
+            <td
+              className="square7"
+              id="s7"
+              style={{ backgroundColor: c7 }}
+              onClick={CheckA}
+            ></td>
+            <td
+              className="square8"
+              id="s8"
+              style={{ backgroundColor: c8 }}
+              onClick={CheckA}
+            ></td>
+            <td
+              className="square9"
+              id="s9"
+              style={{ backgroundColor: c9 }}
+              onClick={CheckA}
+            ></td>
+          </tr>
+        </table>
+      )}
+
+      {showstart && (
+        <div className="StartBcont">
+          <button id="colourbutton" onClick={setBg}>
+            Start Game
+          </button>
+        </div>
+      )}
+
+      {showgame && <h1>{level}</h1>}
+      {/* {showgame && <h1>{cdown}</h1>} */}
     </div>
   );
 }
