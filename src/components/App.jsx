@@ -203,7 +203,7 @@ function App() {
 
   return (
     <div>
-      {!reveal && (
+      {/* {!reveal && (
         <div className="landing">
           <p className="bHeader">
             <span className="ti1" style={{ color: title1 }}>
@@ -248,9 +248,8 @@ function App() {
             Play!
           </button>
         </div>
-      )}
-
-      {reveal && <Game />}
+      )} */}
+      <Game />
     </div>
   );
 }

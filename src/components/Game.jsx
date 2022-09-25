@@ -11,6 +11,9 @@ function Game() {
   const [c8, setC8] = useState("white");
   const [c9, setC9] = useState("white");
 
+  const [lvlColour, setlvlColour] = useState("black");
+  const [lvlender, setlvlender] = useState("black");
+
   const [correct, setcorrect] = useState("c");
   const [showgame, setshowgame] = useState(false);
   const [showstart, setStart] = useState(true);
@@ -87,19 +90,38 @@ function Game() {
       }
     } else if (level > 5 && level <= 10) {
       if (num == 1) {
-        shade = 25;
+        shade = 40;
       } else {
-        shade = -25;
+        shade = -40;
       }
-    } else if (level > 10) {
+    } else if (level > 10 && level <= 15) {
+      if (num == 1) {
+        shade = 30;
+      } else {
+        shade = -30;
+      }
+    } else if (level > 10 && level <= 15) {
+      if (num == 1) {
+        shade = 20;
+      } else {
+        shade = -20;
+      }
+    } else if (level > 15 && level <= 20) {
       if (num == 1) {
         shade = 10;
       } else {
         shade = -10;
       }
+    } else if (level > 20) {
+      if (num == 1) {
+        shade = 5;
+      } else {
+        shade = -5;
+      }
     }
 
     const answer = shadeColor(randomColor, shade);
+    setlvlender(answer);
     switch (randomsquare) {
       case 0:
         setC1(answer);
@@ -111,6 +133,7 @@ function Game() {
         setC7(randomColor);
         setC8(randomColor);
         setC9(randomColor);
+        setlvlColour(randomColor);
         setcorrect("s1");
         break;
       case 1:
@@ -123,6 +146,7 @@ function Game() {
         setC7(randomColor);
         setC8(randomColor);
         setC9(randomColor);
+        setlvlColour(randomColor);
         setcorrect("s2");
         break;
       case 2:
@@ -135,6 +159,7 @@ function Game() {
         setC7(randomColor);
         setC8(randomColor);
         setC9(randomColor);
+        setlvlColour(randomColor);
         setcorrect("s3");
         break;
       case 3:
@@ -147,6 +172,7 @@ function Game() {
         setC7(randomColor);
         setC8(randomColor);
         setC9(randomColor);
+        setlvlColour(randomColor);
         setcorrect("s4");
         break;
       case 4:
@@ -159,6 +185,7 @@ function Game() {
         setC7(randomColor);
         setC8(randomColor);
         setC9(randomColor);
+        setlvlColour(randomColor);
         setcorrect("s5");
         break;
       case 5:
@@ -171,6 +198,7 @@ function Game() {
         setC7(randomColor);
         setC8(randomColor);
         setC9(randomColor);
+        setlvlColour(randomColor);
         setcorrect("s6");
         break;
       case 6:
@@ -183,6 +211,7 @@ function Game() {
         setC7(answer);
         setC8(randomColor);
         setC9(randomColor);
+        setlvlColour(randomColor);
         setcorrect("s7");
         break;
       case 7:
@@ -195,6 +224,7 @@ function Game() {
         setC7(randomColor);
         setC8(answer);
         setC9(randomColor);
+        setlvlColour(randomColor);
         setcorrect("s8");
         break;
       case 8:
@@ -206,6 +236,7 @@ function Game() {
         setC6(randomColor);
         setC7(randomColor);
         setC8(randomColor);
+        setlvlColour(randomColor);
         setC9(answer);
         setcorrect("s9");
         break;
@@ -219,6 +250,7 @@ function Game() {
         setC7(randomColor);
         setC8(randomColor);
         setC9(randomColor);
+        setlvlColour(randomColor);
         setcorrect("s3");
     }
     // StartTimer(10);
@@ -235,14 +267,24 @@ function Game() {
     }
   };
   return (
-    <div>
+    <div className="gamecont">
       {endgame && (
         <div className="Gameovercont">
           <p className="GameOverTitle">GAME OVER</p>
 
-          <p>Your Score: {level}</p>
+          <p className="score">Your Score: {level}</p>
+          <div className="results">
+            <div
+              className="rightcolour"
+              style={{ backgroundColor: lvlColour }}
+            ></div>
+            <div
+              className="wrongcolour"
+              style={{ backgroundColor: lvlender }}
+            ></div>
+          </div>
 
-          <button id="colourbutton" onClick={restartGame}>
+          <button className="Restartbutton" onClick={restartGame}>
             Try Again
           </button>
         </div>
@@ -316,13 +358,19 @@ function Game() {
 
       {showstart && (
         <div className="StartBcont">
-          <button id="colourbutton" onClick={setBg}>
+          <button className="colourbutton" onClick={setBg}>
             Start Game
           </button>
         </div>
       )}
 
-      {showgame && <h1>{level}</h1>}
+      {showgame && (
+        <div className="levelcont">
+          <h1 className="showlevel" style={{ color: lvlColour }}>
+            {level}
+          </h1>
+        </div>
+      )}
       {/* {showgame && <h1>{cdown}</h1>} */}
     </div>
   );
