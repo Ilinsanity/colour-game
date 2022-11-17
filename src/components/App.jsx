@@ -203,52 +203,6 @@ function App() {
 
   return (
     <div>
-      {/* {!reveal && (
-        <div className="landing">
-          <p className="bHeader">
-            <span className="ti1" style={{ color: title1 }}>
-              C
-            </span>{" "}
-            <span className="ti2" style={{ color: title1 }}>
-              o
-            </span>{" "}
-            <span className="ti3" style={{ color: title1 }}>
-              l
-            </span>{" "}
-            <span className="ti4" style={{ color: title1 }}>
-              o
-            </span>{" "}
-            <span className="ti5" style={{ color: title1 }}>
-              u
-            </span>{" "}
-            <span className="ti6" style={{ color: title1 }}>
-              r
-            </span>
-          </p>
-
-          <p className="bHeader">
-            <span className="ti7" style={{ color: title2 }}>
-              B
-            </span>{" "}
-            <span className="ti8" style={{ color: title2 }}>
-              l
-            </span>{" "}
-            <span className="ti9" style={{ color: title2 }}>
-              i
-            </span>{" "}
-            <span className="ti10" style={{ color: title2 }}>
-              n
-            </span>{" "}
-            <span className="ti11" style={{ color: title2 }}>
-              d
-            </span>
-          </p>
-
-          <button className="Lbutton" onClick={Nextgame}>
-            Play!
-          </button>
-        </div>
-      )} */}
       <Game />
     </div>
   );
