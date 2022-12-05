@@ -270,18 +270,101 @@ function Game() {
     <div className="gamecont">
       {endgame && (
         <div className="Gameovercont">
-          <p className="GameOverTitle">GAME OVER</p>
+          <p className="GameOverTitle">Game Over</p>
 
           <p className="score">Your Score: {level}</p>
           <div className="results">
-            <div
-              className="rightcolour"
-              style={{ backgroundColor: lvlColour }}
-            ></div>
-            <div
-              className="wrongcolour"
-              style={{ backgroundColor: lvlender }}
-            ></div>
+            <table>
+              <tr>
+                <td
+                  className="endcircle1"
+                  id="s1"
+                  style={{
+                    backgroundColor: c1,
+                    border:
+                      correct == "s1" ? "4px dashed green" : "2px solid black",
+                  }}
+                ></td>
+                <td
+                  className="endcircle2"
+                  id="s2"
+                  style={{
+                    backgroundColor: c2,
+                    border:
+                      correct == "s2" ? "4px dashed green" : "2px solid black",
+                  }}
+                ></td>
+                <td
+                  className="endcircle3"
+                  id="s3"
+                  style={{
+                    backgroundColor: c3,
+                    border:
+                      correct == "s3" ? "4px dashed green" : "2px solid black",
+                  }}
+                ></td>
+              </tr>
+
+              <tr>
+                <td
+                  className="endcircle4"
+                  id="s4"
+                  style={{
+                    backgroundColor: c4,
+                    border:
+                      correct == "s4" ? "4px dashed green" : "2px solid black",
+                  }}
+                ></td>
+                <td
+                  className="endcircle5"
+                  id="s5"
+                  style={{
+                    backgroundColor: c5,
+                    border:
+                      correct == "s5" ? "4px dashed green" : "2px solid black",
+                  }}
+                ></td>
+                <td
+                  className="endcircle6"
+                  id="s6"
+                  style={{
+                    backgroundColor: c6,
+                    border:
+                      correct == "s6" ? "4px dashed green" : "2px solid black",
+                  }}
+                ></td>
+              </tr>
+
+              <tr>
+                <td
+                  className="endcircle7"
+                  id="s7"
+                  style={{
+                    backgroundColor: c7,
+                    border:
+                      correct == "s7" ? "4px dashed green" : "2px solid black",
+                  }}
+                ></td>
+                <td
+                  className="endcircle8"
+                  id="s8"
+                  style={{
+                    backgroundColor: c8,
+                    border:
+                      correct == "s8" ? "4px dashed green" : "2px solid black",
+                  }}
+                ></td>
+                <td
+                  className="endcircle9"
+                  id="s9"
+                  style={{
+                    backgroundColor: c9,
+                    border:
+                      correct == "s9" ? "4px dashed green" : "2px solid black",
+                  }}
+                ></td>
+              </tr>
+            </table>
           </div>
 
           <button className="Restartbutton" onClick={restartGame}>
@@ -358,6 +441,8 @@ function Game() {
 
       {showstart && (
         <div className="StartBcont">
+          <h2 className="title">Colour</h2>
+          <h2 className="title2">Game</h2>
           <button className="colourbutton" onClick={setBg}>
             Start Game
           </button>
@@ -374,6 +459,16 @@ function Game() {
       {/* {showgame && <h1>{cdown}</h1>} */}
     </div>
   );
+}
+
+{
+  /* <div className="StartBcont">
+          <h2 className="title">Colour</h2>
+          <h2 className="title2">Game</h2>
+          <button className="colourbutton" onClick={setBg}>
+            Start Game
+          </button>
+        </div> */
 }
 
 export default Game;
