@@ -119,7 +119,7 @@ background: linear-gradient(
     hsla(163, 100%, 75%, 1) 100%
   );
   background-size: 400% 400%;
-  animation: gradient 7s ease infinite;
+  animation: gradient 4s ease infinite;
   height: 100vh;
   /* display: flex; */
   align-items: center;
