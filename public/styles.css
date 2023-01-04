@@ -150,10 +150,11 @@ background: linear-gradient(
   letter-spacing: 8px;
   font-family: "Fredoka One", cursive;
 }
+
 .colourbutton {
   /* width: 30vw; */
   /* height: 20vh; */
-  border-radius: 10px;
+  letter-spacing: 2px;
   background-color: transparent;
   border-color: transparent;
   font-size: 3em;
@@ -164,13 +165,14 @@ background: linear-gradient(
   /* font-family: "ClickuperRegular";
   font-weight: bold;
   font-style: normal; */
-  -webkit-transition: border-color 0.4s;
-  transition: border-color 0.4s;
+  -webkit-transition: color 0.4s;
+  transition: color 0.4s;
 }
 
 .colourbutton:hover {
-  border-color: black;
-  /* color: transparent; */
+  color: transparent;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
 }
 
 .row1 {
