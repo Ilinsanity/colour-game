@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TextField from "@mui/material/TextField";
 
 function Game() {
   const [c1, setC1] = useState("white");
@@ -18,6 +19,7 @@ function Game() {
   const [showgame, setshowgame] = useState(false);
   const [showstart, setStart] = useState(true);
   const [endgame, setend] = useState(false);
+  const [showlogin, setlogin] = useState(false);
   // const [cdown, setcdown] = useState(10);
 
   const cdown = 10;
@@ -59,6 +61,11 @@ function Game() {
     setend(true);
     setshowgame(false);
     // setStart(false);
+  }
+
+  function SLogin() {
+    setStart(false);
+    setlogin(true);
   }
 
   function restartGame() {
@@ -446,6 +453,18 @@ function Game() {
           <button className="colourbutton" onClick={setBg}>
             Start Game
           </button>
+          <br></br>
+          <button className="colourbutton-2" onClick={SLogin}>
+            Login/Register
+          </button>
+        </div>
+      )}
+
+      {showlogin && (
+        <div className="LoginContainer">
+          <h1 className="logintitle">Log In</h1>
+          <TextField className="Username" id="outlined-name" label="Username" />
+          <TextField className="Password" id="outlined-name" label="PIN" />
         </div>
       )}
 
