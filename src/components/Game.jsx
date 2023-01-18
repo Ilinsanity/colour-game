@@ -91,35 +91,53 @@ function Game() {
     var num = Math.random() <= 0.5 ? 1 : 2;
     if (level <= 5) {
       if (num == 1) {
+        shade = 80;
+      } else {
+        shade = -80;
+      }
+    } else if (level > 5 && level <= 10) {
+      if (num == 1) {
+        shade = 70;
+      } else {
+        shade = -70;
+      }
+    } else if (level > 10 && level <= 15) {
+      if (num == 1) {
+        shade = 60;
+      } else {
+        shade = -60;
+      }
+    } else if (level > 10 && level <= 15) {
+      if (num == 1) {
         shade = 50;
       } else {
         shade = -50;
       }
-    } else if (level > 5 && level <= 10) {
+    } else if (level > 15 && level <= 20) {
       if (num == 1) {
         shade = 40;
       } else {
         shade = -40;
       }
-    } else if (level > 10 && level <= 15) {
+    } else if (level > 20 && level <= 25) {
       if (num == 1) {
         shade = 30;
       } else {
         shade = -30;
       }
-    } else if (level > 10 && level <= 15) {
+    } else if (level > 25 && level <= 30) {
       if (num == 1) {
         shade = 20;
       } else {
         shade = -20;
       }
-    } else if (level > 15 && level <= 20) {
+    } else if (level > 30 && level <= 35) {
       if (num == 1) {
         shade = 10;
       } else {
         shade = -10;
       }
-    } else if (level > 20) {
+    } else if (level > 35) {
       if (num == 1) {
         shade = 5;
       } else {

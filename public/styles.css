@@ -191,6 +191,7 @@ background: linear-gradient(
   font-style: normal; */
   -webkit-transition: color 0.4s;
   transition: color 0.4s;
+  visibility: hidden;
 }
 
 .colourbutton-2:hover {
