@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
+import { getDatabase, ref, set } from "firebase/database";
+import { firestore } from "../firebase_setup";
+import { useRef } from "react";
+import { addDoc, collection, doc, getDoc, setDoc } from "@firebase/firestore";
+import { async } from "@firebase/util";
 
 function Game() {
   const [c1, setC1] = useState("white");
@@ -20,6 +25,14 @@ function Game() {
   const [showstart, setStart] = useState(true);
   const [endgame, setend] = useState(false);
   const [showlogin, setlogin] = useState(false);
+  const [showRegister, setRegister] = useState(false);
+  const [currentUsername, setUsername] = useState("");
+  const [currentPassword, setPassword] = useState("");
+  const [ConfirmPassword, setConfirmPassword] = useState("");
+  const [ErrorChange, setErrorChange] = useState("");
+  const [hasUser, setHasUser] = useState(false);
+  const [currentUserHighscore, setcurrentUserHighscore] = useState(0);
+  const [Error, setError] = useState("");
   // const [cdown, setcdown] = useState(10);
 
   const cdown = 10;
@@ -57,15 +70,134 @@ function Game() {
   //   }, 1000);
   // }
 
+  function Register() {
+    setlogin(false);
+    setRegister(true);
+  }
+
+  const ref = collection(firestore, "players");
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+    let data = {
+      Username: "issac",
+      Password: "Kewlbeans",
+      highscore: 20,
+    };
+
+    try {
+      addDoc(ref, data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  async function writeUserData() {
+    const citiesRef = collection(firestore, "players");
+
+    await setDoc(doc(citiesRef, "Hanni"), {
+      username: "Hanni",
+      password: "Ipham",
+      highscore: 20,
+    });
+  }
+
+  async function checkForUsername() {
+    const docRef = doc(firestore, "players", currentUsername);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      return true;
+    } else {
+      console.log("No such document!");
+      return false;
+    }
+  }
+
+  async function checkLogin() {
+    const docRef = doc(firestore, "players", currentUsername);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const object = docSnap.data();
+      if (object.password == currentPassword) {
+        setHasUser(true);
+        const highscore = getHighscore;
+        setcurrentUserHighscore(highscore);
+        setBg();
+      } else {
+        setErrorChange("Incorrect Password");
+      }
+      console.log("Document data:", docSnap.data());
+    } else {
+      setErrorChange("User does not exist");
+      console.log("No such document!");
+    }
+  }
+
+  async function CheckRegister() {
+    const docRef = doc(firestore, "players", currentUsername);
+    const docSnap = await getDoc(docRef);
+    if (
+      currentPassword === ConfirmPassword &&
+      currentPassword !== "" &&
+      ConfirmPassword !== "" &&
+      currentUsername !== ""
+    ) {
+      if (docSnap.exists()) {
+        setErrorChange("Username already exists!");
+        console.log("found");
+      } else {
+        const dbRef = collection(firestore, "players");
+
+        await setDoc(doc(dbRef, currentUsername), {
+          username: currentUsername,
+          password: currentPassword,
+          highscore: 0,
+        });
+        SLogin();
+        setErrorChange("");
+        console.log("gone");
+      }
+    } else if (
+      currentUsername == "" ||
+      currentPassword == "" ||
+      ConfirmPassword == ""
+    ) {
+      setErrorChange("Missing Field!");
+    } else if (currentPassword != ConfirmPassword) {
+      setErrorChange("Passwords are not the same");
+    }
+  }
+  async function getHighscore() {
+    const docRef = doc(firestore, "players", currentUsername);
+    const docSnap = await getDoc(docRef);
+
+    const object = docSnap.data();
+    const highscore = object.highscore;
+    console.log(highscore);
+    setcurrentUserHighscore(highscore);
+  }
   function GameOver() {
+    getHighscore();
+
     setend(true);
     setshowgame(false);
     // setStart(false);
   }
 
+  function BackToStart() {
+    setStart(true);
+    setlogin(false);
+    setshowgame(false);
+    setend(false);
+  }
+
   function SLogin() {
     setStart(false);
     setlogin(true);
+    setRegister(false);
+    setErrorChange("");
   }
 
   function restartGame() {
@@ -74,14 +206,11 @@ function Game() {
     setBg();
   }
   function setBg() {
+    console.log(currentUsername);
     setshowgame(true);
     setStart(false);
+    setlogin(false);
     var shade = 10;
-    // const randomBetween = (min, max) =>
-    //   min + Math.floor(Math.random() * (max - min + 1));
-    // const r = randomBetween(0, 255);
-    // const g = randomBetween(0, 255);
-    // const b = randomBetween(0, 255);
 
     // const randomColor = "rgb(" + r + "," + g + "," + b + ")";
     const randomColor =
@@ -295,9 +424,16 @@ function Game() {
     <div className="gamecont">
       {endgame && (
         <div className="Gameovercont">
+          {hasUser && (
+            <h3 className="profile">
+              <i class="fas fa-user"></i>
+              {currentUsername}
+            </h3>
+          )}
           <p className="GameOverTitle">Game Over</p>
 
           <p className="score">Your Score: {level}</p>
+          <p className="prevscore">Your Score: {currentUserHighscore}</p>
           <div className="results">
             <table>
               <tr>
@@ -395,6 +531,10 @@ function Game() {
           <button className="Restartbutton" onClick={restartGame}>
             Try Again
           </button>
+          <button className="Restartbutton">Check LeaderBoard</button>
+          <button className="Restartbutton" onClick={BackToStart}>
+            Back to Main Screen
+          </button>
         </div>
       )}
       {showgame && (
@@ -466,6 +606,13 @@ function Game() {
 
       {showstart && (
         <div className="StartBcont">
+          {hasUser && (
+            <h3 className="profile">
+              <i class="fas fa-user"></i>
+              {currentUsername}
+            </h3>
+          )}
+
           <h2 className="title">Colour</h2>
           <h2 className="title2">Game</h2>
           <button className="colourbutton" onClick={setBg}>
@@ -480,9 +627,67 @@ function Game() {
 
       {showlogin && (
         <div className="LoginContainer">
-          <h1 className="logintitle">Log In</h1>
-          <TextField className="Username" id="outlined-name" label="Username" />
-          <TextField className="Password" id="outlined-name" label="PIN" />
+          <h1 className="logintitle">Welcome</h1>
+          <TextField
+            className="Username"
+            id="standard-basic"
+            label="Username"
+            variant="standard"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <TextField
+            className="Password"
+            id="standard-basic"
+            label="Password"
+            variant="standard"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button onClick={checkLogin} className="loginbutton">
+            Log In
+          </button>
+          <p className="error">{ErrorChange}</p>
+          <button onClick={Register} className="loginbutton">
+            Register
+          </button>
+          <button onClick={BackToStart} className="loginbutton">
+            Back To Game
+          </button>
+        </div>
+      )}
+
+      {showRegister && (
+        <div>
+          <div className="LoginContainer">
+            <h1 className="logintitle">Register</h1>
+            <TextField
+              className="Username"
+              id="standard-basic"
+              label="Username"
+              variant="standard"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <TextField
+              className="Password"
+              id="standard-basic"
+              label="Password"
+              variant="standard"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <TextField
+              className="Password"
+              id="standard-basic"
+              label="Confirm Password"
+              variant="standard"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            <button onClick={CheckRegister} className="loginbutton">
+              Register
+            </button>
+            <p className="error">{ErrorChange}</p>
+            <button onClick={SLogin} className="loginbutton">
+              Back to Login
+            </button>
+          </div>
         </div>
       )}
 
@@ -496,16 +701,6 @@ function Game() {
       {/* {showgame && <h1>{cdown}</h1>} */}
     </div>
   );
-}
-
-{
-  /* <div className="StartBcont">
-          <h2 className="title">Colour</h2>
-          <h2 className="title2">Game</h2>
-          <button className="colourbutton" onClick={setBg}>
-            Start Game
-          </button>
-        </div> */
 }
 
 export default Game;
