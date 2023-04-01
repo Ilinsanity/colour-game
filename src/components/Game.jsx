@@ -3,7 +3,14 @@ import TextField from "@mui/material/TextField";
 import { getDatabase, ref, set } from "firebase/database";
 import { firestore } from "../firebase_setup";
 import { useRef } from "react";
-import { addDoc, collection, doc, getDoc, setDoc } from "@firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+} from "@firebase/firestore";
 import { async } from "@firebase/util";
 
 function Game() {
@@ -32,7 +39,7 @@ function Game() {
   const [ErrorChange, setErrorChange] = useState("");
   const [hasUser, setHasUser] = useState(false);
   const [currentUserHighscore, setcurrentUserHighscore] = useState(0);
-  const [Error, setError] = useState("");
+  const [isLoggedin, setloggedIn] = useState(false);
   // const [cdown, setcdown] = useState(10);
 
   const cdown = 10;
@@ -92,9 +99,9 @@ function Game() {
     }
   };
   async function writeUserData() {
-    const citiesRef = collection(firestore, "players");
+    const playersRef = collection(firestore, "players");
 
-    await setDoc(doc(citiesRef, "Hanni"), {
+    await setDoc(doc(playersRef, "Hanni"), {
       username: "Hanni",
       password: "Ipham",
       highscore: 20,
@@ -122,9 +129,10 @@ function Game() {
       const object = docSnap.data();
       if (object.password == currentPassword) {
         setHasUser(true);
-        const highscore = getHighscore;
+        const highscore = getHighscore();
         setcurrentUserHighscore(highscore);
         setBg();
+        setloggedIn(true);
       } else {
         setErrorChange("Incorrect Password");
       }
@@ -179,10 +187,18 @@ function Game() {
     setcurrentUserHighscore(highscore);
   }
   function GameOver() {
-    getHighscore();
-
     setend(true);
     setshowgame(false);
+    getHighscore();
+    const docRef = doc(firestore, "players", currentUsername);
+    if (currentUserHighscore < level) {
+      const updates = {
+        highscore: level,
+      };
+
+      updateDoc(docRef, updates);
+    }
+
     // setStart(false);
   }
 
@@ -191,6 +207,14 @@ function Game() {
     setlogin(false);
     setshowgame(false);
     setend(false);
+    setlevel(0);
+  }
+
+  function Logout() {
+    setUsername("");
+    setPassword("");
+    setloggedIn(false);
+    setHasUser(false);
   }
 
   function SLogin() {
@@ -433,7 +457,9 @@ function Game() {
           <p className="GameOverTitle">Game Over</p>
 
           <p className="score">Your Score: {level}</p>
-          <p className="prevscore">Your Score: {currentUserHighscore}</p>
+          {isLoggedin && (
+            <p className="prevscore">Your Highest: {currentUserHighscore}</p>
+          )}
           <div className="results">
             <table>
               <tr>
@@ -619,9 +645,15 @@ function Game() {
             Start Game
           </button>
           <br></br>
-          <button className="colourbutton-2" onClick={SLogin}>
-            Login/Register
-          </button>
+          {isLoggedin ? (
+            <button className="colourbutton-2" onClick={Logout}>
+              Log Out
+            </button>
+          ) : (
+            <button className="colourbutton-2" onClick={SLogin}>
+              Login/Register
+            </button>
+          )}
         </div>
       )}
 
@@ -696,6 +728,9 @@ function Game() {
           <h1 className="showlevel" style={{ color: lvlColour }}>
             {level}
           </h1>
+          {/* {isLoggedin && (
+            <p className="showcurrenthighscore">{currentUserHighscore}</p>
+          )} */}
         </div>
       )}
       {/* {showgame && <h1>{cdown}</h1>} */}
