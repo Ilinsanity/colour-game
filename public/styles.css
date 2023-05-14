@@ -153,11 +153,35 @@ background: linear-gradient(
   padding-top: 10%;
   letter-spacing: 8px;
   font-family: "Fredoka One", cursive;
+  left: 0;
 }
 
 .title2 {
   font-size: 8em;
   letter-spacing: 8px;
+  font-family: "Fredoka One", cursive;
+}
+
+.leaderboardcont {
+  float: left;
+  margin-left: 5%;
+  margin-top: 5%;
+  /* border: black 1px solid;
+  border-radius: 20%; */
+}
+
+.ldbd {
+  font-size: 1.5em;
+  font-family: "Fredoka One", cursive;
+}
+
+.plyrUsername {
+  font-size: 1.3em;
+  font-family: "Fredoka One", cursive;
+}
+
+.plyrScore {
+  font-size: 1.3em;
   font-family: "Fredoka One", cursive;
 }
 

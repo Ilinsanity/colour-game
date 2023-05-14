@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import { getDatabase, ref, set } from "firebase/database";
 import { firestore } from "../firebase_setup";
@@ -8,6 +8,7 @@ import {
   collection,
   doc,
   getDoc,
+  getDocs,
   setDoc,
   updateDoc,
 } from "@firebase/firestore";
@@ -40,6 +41,7 @@ function Game() {
   const [hasUser, setHasUser] = useState(false);
   const [currentUserHighscore, setcurrentUserHighscore] = useState(0);
   const [isLoggedin, setloggedIn] = useState(false);
+  const [LeaderBoard, setLeaderBoard] = useState([]);
   // const [cdown, setcdown] = useState(10);
 
   const cdown = 10;
@@ -64,18 +66,24 @@ function Game() {
     return "#" + RR + GG + BB;
   }
 
-  // function StartTimer(sec) {
-  //   var count = sec;
-  //   var IntervalID = setInterval(function () {
-  //     if (count < 0) {
-  //       clearInterval(IntervalID);
-  //       GameOver();
-  //     } else {
-  //       count--;
-  //       cdown = count;
-  //     }
-  //   }, 1000);
-  // }
+  useEffect(() => {
+    fetchLeaderBoard();
+  }, []);
+
+  async function fetchLeaderBoard() {
+    const colRef = collection(firestore, "players");
+    const docsSnap = await getDocs(colRef);
+
+    const array = [];
+    docsSnap.forEach((doc) => {
+      console.log(doc.data());
+      array.push(doc.data());
+    });
+    array.sort((a, b) => {
+      return b.highscore - a.highscore;
+    });
+    setLeaderBoard(array);
+  }
 
   function Register() {
     setlogin(false);
@@ -638,7 +646,20 @@ function Game() {
               {currentUsername}
             </h3>
           )}
-
+          <div className="leaderboardcont">
+            <p className="ldbd">LeaderBoard</p>
+            {LeaderBoard.map((plyr, index) => {
+              return (
+                <div>
+                  <p className="plyrUsername">
+                    {" "}
+                    #{index + 1} {plyr.username}
+                  </p>
+                  <p className="plyrScore">{plyr.highscore}</p>
+                </div>
+              );
+            })}
+          </div>
           <h2 className="title">Colour</h2>
           <h2 className="title2">Game</h2>
           <button className="colourbutton" onClick={setBg}>
