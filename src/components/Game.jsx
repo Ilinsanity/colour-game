@@ -216,6 +216,7 @@ function Game() {
     setshowgame(false);
     setend(false);
     setlevel(0);
+    fetchLeaderBoard();
   }
 
   function Logout() {
@@ -565,7 +566,6 @@ function Game() {
           <button className="Restartbutton" onClick={restartGame}>
             Try Again
           </button>
-          <button className="Restartbutton">Check LeaderBoard</button>
           <button className="Restartbutton" onClick={BackToStart}>
             Back to Main Screen
           </button>
