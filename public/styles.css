@@ -3,6 +3,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Just+Another+Hand&family=Just+Me+Again+Down+Here&family=Love+Ya+Like+A+Sister&family=Nanum+Pen+Script&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 * {
   padding: 0;
   margin: 0;
@@ -20,6 +24,27 @@
 
 body {
   background-color: #b2beb5;
+}
+
+.jah {
+  font-family: "Just Another Hand";
+
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.jah1 {
+  font-family: "Just Another Hand";
+  font-size: 13rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.meshstyle {
+  width: 46rem;
+  height: 29rem;
 }
 
 .landing {
@@ -104,6 +129,7 @@ background: linear-gradient(
 /* GAME COMPONENT STYLES*/
 .StartBcont {
   text-align: center;
+  background-color: white;
   background: hsla(278, 100%, 36%, 1);
 
   background: linear-gradient(
@@ -126,6 +152,36 @@ background: linear-gradient(
   display: inline-block;
   align-items: center;
   justify-content: center;
+}
+
+.landgrad {
+  background: hsla(278, 100%, 36%, 1);
+
+  /* background: linear-gradient(
+    90deg,
+    hsla(278, 100%, 36%, 1) 0%,
+    hsla(263, 60%, 48%, 1) 11.11111111111111%,
+    hsla(239, 53%, 59%, 1) 22.22222222222222%,
+    hsla(213, 64%, 59%, 1) 33.33333333333333%,
+    hsla(203, 69%, 59%, 1) 44.44444444444444%,
+    hsla(194, 73%, 59%, 1) 55.55555555555556%,
+    hsla(188, 70%, 61%, 1) 66.66666666666666%,
+    hsla(180, 66%, 63%, 1) 77.77777777777777%,
+    hsla(171, 80%, 69%, 1) 88.88888888888889%,
+    hsla(163, 100%, 75%, 1) 100%
+  ); */
+  background: linear-gradient(
+    to right,
+    violet,
+    indigo,
+    blue,
+    green,
+    yellow,
+    orange,
+    red
+  );
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite;
 }
 
 @keyframes gradient {

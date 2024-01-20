@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "animejs": "^3.2.1",
     "env-cmd": "^10.1.0",
-    "firebase": "^9.17.2",
+    "firebase": "^9.23.0",
     "jquery": "^3.6.3",
     "mui": "^0.0.1",
     "path": "^0.12.7",
@@ -52,5 +52,8 @@
     "fs": false,
     "os": false,
     "path": false
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
   }
 }

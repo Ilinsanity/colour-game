@@ -299,11 +299,17 @@ function Game() {
       } else {
         shade = -10;
       }
-    } else if (level > 35) {
+    } else if (level > 35 && level <= 40) {
       if (num == 1) {
         shade = 5;
       } else {
         shade = -5;
+      }
+    } else if (level > 40 && level <= 45) {
+      if (num == 1) {
+        shade = 4;
+      } else {
+        shade = -4;
       }
     }
 
@@ -639,42 +645,94 @@ function Game() {
       )}
 
       {showstart && (
-        <div className="StartBcont">
-          {hasUser && (
-            <h3 className="profile">
-              <i class="fas fa-user"></i>
-              {currentUsername}
-            </h3>
-          )}
-          <div className="leaderboardcont">
-            <p className="ldbd">LeaderBoard</p>
-            {LeaderBoard.map((plyr, index) => {
-              return (
-                <div>
-                  <p className="plyrUsername">
-                    {" "}
-                    #{index + 1} {plyr.username}
-                  </p>
-                  <p className="plyrScore">{plyr.highscore}</p>
-                </div>
-              );
-            })}
+        <div className="">
+          <div className="w-screen h-screen flex items-center justify-end bg-bluepaint bg-no-repeat bg-contain bg-bottom absolute z-30 bot-0 ">
+            <div className="w-max h-max flex flex-col">
+              <div className="flex">
+                <div></div>
+                <div></div>
+              </div>
+            </div>
           </div>
-          <h2 className="title">Colour</h2>
-          <h2 className="title2">Game</h2>
-          <button className="colourbutton" onClick={setBg}>
-            Start Game
-          </button>
-          <br></br>
-          {isLoggedin ? (
-            <button className="colourbutton-2" onClick={Logout}>
-              Log Out
-            </button>
-          ) : (
-            <button className="colourbutton-2" onClick={SLogin}>
-              Login/Register
-            </button>
-          )}
+          <div className="w-screen h-screen flex justify-start items-start z-20 relative ">
+            <div className="flex absolute top-60 left-56">
+              <div className="flex flex-col relative">
+                <p className="jah1 text-black p-0">
+                  {" "}
+                  <span className="text-c1">C</span>
+                  <span className="text-c2">o</span>
+                  <span className="text-c3">l</span>
+                  <span className="text-c4">o</span>
+                  <span className="text-c5">u</span>
+                  <span className="text-c6">r</span>
+                </p>
+                <div className="h-6 w-full bg-nund bg-contain bg-no-repeat absolute bottom-10"></div>
+              </div>
+              <div className="relative">
+                <p className="jah text-blindcol text-7xl absolute bottom-10 ">
+                  Blind
+                </p>
+              </div>
+            </div>
+            <div className="meshstyle bg-mesh bg-no-repeat bg-contain bg-center absolute top-7 right-64"></div>
+          </div>
+          {/* landgrad*/}
+          <div className="w-screen h-screen  bg-white absolute z-10 top-0"></div>
+
+          {/* <div className="w-96 h-screen bg-cover bg-center  bg-bluepaint absolute z-30 bot-0 ">
+            <div className="w-max h-max mr-5 flex flex-col">
+              <button className="navname">
+                <h1 className=" uppercase text-gold text-4xl rounded p-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-black">
+                  About Me
+                </h1>
+              </button>
+              <button className="navname">
+                <h1 className=" uppercase text-gold text-4xl rounded p-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-black">
+                  Projects
+                </h1>
+              </button>
+            </div>
+          </div> */}
+          {/* {hasUser && (
+              <h3 className="profile">
+                <i class="fas fa-user"></i>
+                {currentUsername}
+              </h3>
+            )} */}
+          {/* <div className="leaderboardcont">
+              <p className="ldbd">LeaderBoard</p>
+              {LeaderBoard.map((plyr, index) => {
+                return (
+                  <div>
+                    <p className="plyrUsername">
+                      {" "}
+                      #{index + 1} {plyr.username}
+                    </p>
+                    <p className="plyrScore">{plyr.highscore}</p>
+                  </div>
+                );
+              })}
+            </div> */}
+
+          {/* <button className="colourbutton" onClick={setBg}>
+              Start Game
+            </button> */}
+          {/* <div className="w-screen h-screen flex flex-col justify-center items-center z-20 relative ">
+            <p className="text-9xl name text-white">Issac</p>
+            <p className="text-9xl name text-gold ">Lin</p> */}
+          {/* <p className="text-4xl text-gold"> Now this is Epic</p> */}
+          {/* </div> */}
+          {/* {isLoggedin ? (
+              <button className="colourbutton-2" onClick={Logout}>
+                Log Out
+              </button>
+            ) : (
+              <button className="colourbutton-2" onClick={SLogin}>
+                Login/Register
+              </button>
+            )} */}
+
+          {/* <div className="w-screen h-screen bg-white bg-cover bg-center absolute z-10 top-0 bg-fixed"></div> */}
         </div>
       )}
 
