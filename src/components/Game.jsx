@@ -459,6 +459,26 @@ function Game() {
       GameOver();
     }
   };
+
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   // Trigger the animation when the page is loaded
+  //   animateLetters("Colour");
+  // });
+
+  // function animateLetters(word) {
+  //   // Select all the spans inside the animated-word div
+  //   var letters = document.querySelectorAll(".colanim span");
+
+  //   // Loop through each letter and apply the animation
+  //   letters.forEach(function (letter, index) {
+  //     // Calculate a delay based on the index to stagger the animation
+  //     var delay = index * 0.5; // Adjust the delay as needed
+
+  //     // Apply the animation and delay
+  //     letter.style.animation =
+  //       "slideUp 0.8s ease-in-out forwards" + delay + "s";
+  //   });
+  // }
   return (
     <div className="gamecont">
       {endgame && (
@@ -657,24 +677,23 @@ function Game() {
           <div className="w-screen h-screen flex justify-start items-start z-20 relative ">
             <div className="flex absolute top-60 left-56">
               <div className="flex flex-col relative">
-                <p className="jah1 text-black p-0">
-                  {" "}
-                  <span className="text-c1">C</span>
-                  <span className="text-c2">o</span>
-                  <span className="text-c3">l</span>
-                  <span className="text-c4">o</span>
-                  <span className="text-c5">u</span>
-                  <span className="text-c6">r</span>
+                <p className="jah1 text-black p-0 ">
+                  <span className="text-c1 colanim">C</span>
+                  <span className="text-c2 colanim">o</span>
+                  <span className="text-c3 colanim">l</span>
+                  <span className="text-c4 colanim">o</span>
+                  <span className="text-c5 colanim">u</span>
+                  <span className="text-c6 colanim">r</span>
                 </p>
-                <div className="h-6 w-full bg-nund bg-contain bg-no-repeat absolute bottom-10"></div>
+                <div className="h-6 w-full bg-nund bg-contain bg-no-repeat absolute bottom-9 dashline"></div>
               </div>
               <div className="relative">
-                <p className="jah text-blindcol text-7xl absolute bottom-10 ">
+                <p className="jah text-blindcol text-7xl absolute bottom-10 blind">
                   Blind
                 </p>
               </div>
             </div>
-            <div className="meshstyle bg-mesh bg-no-repeat bg-contain bg-center absolute top-7 right-64"></div>
+            <div className="meshstyle bg-mesh bg-no-repeat bg-contain bg-center absolute top-7 right-0"></div>
           </div>
           {/* landgrad*/}
           <div className="w-screen h-screen  bg-white absolute z-10 top-0"></div>

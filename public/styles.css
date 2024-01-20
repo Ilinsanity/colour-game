@@ -45,8 +45,22 @@ body {
 .meshstyle {
   width: 46rem;
   height: 29rem;
+  opacity: 0;
+  animation: fadeIn 3s ease forwards;
 }
-
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 .landing {
   text-align: center;
   width: 100%;
@@ -184,6 +198,67 @@ background: linear-gradient(
   animation: gradient 8s ease infinite;
 }
 
+.colanim {
+  display: inline-block;
+  opacity: 0;
+  animation: slideUp 1.5s ease forwards;
+}
+
+.colanim:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.colanim:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.colanim:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.colanim:nth-child(5) {
+  animation-delay: 0.8s;
+}
+.colanim:nth-child(6) {
+  animation-delay: 1s;
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%); /* Start above the viewport */
+
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-15%); /* Move down slightly */
+  }
+  100% {
+    transform: translateY(0);
+
+    opacity: 1;
+  }
+}
+
+.dashline {
+  opacity: 0;
+  animation: slideUp 3s ease forwards;
+}
+.blind {
+  opacity: 0;
+  animation: fadeRight 2s ease forwards;
+  animation-delay: 0.7s;
+}
+@keyframes fadeRight {
+  0% {
+    transform: translateX(-100%); /* Start above the viewport */
+
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(15%); /* Move down slightly */
+  }
+  100% {
+    transform: translateY(0);
+
+    opacity: 1;
+  }
+}
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
