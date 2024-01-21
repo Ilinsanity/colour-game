@@ -666,11 +666,38 @@ function Game() {
 
       {showstart && (
         <div className="">
-          <div className="w-screen h-screen flex items-center justify-end bg-bluepaint bg-no-repeat bg-contain bg-bottom absolute z-30 bot-0 ">
-            <div className="w-max h-max flex flex-col">
-              <div className="flex">
-                <div></div>
-                <div></div>
+          <div className="w-screen h-1/2 flex  bg-no-repeat bg-cover bg-bottom fixed z-30 bottom-0 justify-center svg-cont">
+            <div className=" flex flex-col items-center justify-center ">
+              <div className=" flex flex-col items-center justify-center">
+                <div
+                  className="flex mr-40 transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
+                  onClick={setBg}
+                >
+                  <div className="bg-arrow bg-contain bg-no-repeat h-40 w-52 mr-4 mt-4 inline-block rot"></div>
+                  <div className="flex flex-col text-center startanimation">
+                    <p className="text-8xl sister text-sg">Start Game!</p>
+                    <p className="text-4xl downhere text-white">
+                      play with unlimited time
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex">
+                  <div className="timedanimation flex flex-col pr-16  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300">
+                    <p className="text-7xl downhere text-timed">
+                      Timed Challenge
+                    </p>
+                    <p className="text-2xl downhere text-white">
+                      Ready to test your skills?
+                    </p>
+                  </div>
+                  <div className="ldbdanimation flex flex-col text-right  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300 ">
+                    <p className="text-7xl downhere text-ldbd">LeaderBoards</p>
+                    <p className="text-2xl downhere text-white">
+                      Check out the top scores!
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -693,25 +720,11 @@ function Game() {
                 </p>
               </div>
             </div>
-            <div className="meshstyle bg-mesh bg-no-repeat bg-contain bg-center absolute top-7 right-0"></div>
+            <div className="meshstyle bg-mesh bg-no-repeat bg-contain bg-center absolute top-7 right-5"></div>
           </div>
           {/* landgrad*/}
-          <div className="w-screen h-screen  bg-white absolute z-10 top-0"></div>
+          <div className="w-screen h-screen landgrad bg-white absolute z-10 top-0"></div>
 
-          {/* <div className="w-96 h-screen bg-cover bg-center  bg-bluepaint absolute z-30 bot-0 ">
-            <div className="w-max h-max mr-5 flex flex-col">
-              <button className="navname">
-                <h1 className=" uppercase text-gold text-4xl rounded p-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-black">
-                  About Me
-                </h1>
-              </button>
-              <button className="navname">
-                <h1 className=" uppercase text-gold text-4xl rounded p-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-black">
-                  Projects
-                </h1>
-              </button>
-            </div>
-          </div> */}
           {/* {hasUser && (
               <h3 className="profile">
                 <i class="fas fa-user"></i>

@@ -7,6 +7,7 @@ module.exports = {
         bluepaint: "url('/src/images/blue brush2.png')",
         mesh: "url('/src/images/meshes.png')",
         nund: "url('/src/images/fillSketch.png')",
+        arrow: "url('/src/images/arrow.png')",
       },
       colors: {
         gold: "#FFD700",
@@ -17,6 +18,9 @@ module.exports = {
         c4: "#FF82EB",
         c5: "#FFA63E",
         c6: "#B78BFF",
+        sg: "#C2FFC0",
+        timed: "#FF7979",
+        ldbd: "#86CCFF",
       },
     },
   },
