@@ -270,9 +270,9 @@ background: linear-gradient(
     hsla(171, 80%, 69%, 1) 88.88888888888889%,
     hsla(163, 100%, 75%, 1) 100%
   ); */
-  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  background: linear-gradient(to right, #33008D 0%,  #0D134D 30%, #614DB2 100% );
   background-size: 400% 400%;
-  animation: gradient 4s ease infinite;
+  animation: gradient 12s ease infinite;
 }
 
 .colanim {

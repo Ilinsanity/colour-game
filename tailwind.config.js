@@ -4,8 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        bluepaint: "url('/src/images/blue brush2.png')",
-        logo: "url('/src/images/logo.png')",
+        bluepaint: "url('/src/images/Vector(1).png')",
         mesh: "url('/src/images/meshes.png')",
         nund: "url('/src/images/fillSketch.png')",
         arrow: "url('/src/images/arrow.png')",

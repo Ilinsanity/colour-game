@@ -683,7 +683,7 @@ function Game() {
                 </div>
 
                 <div className="flex">
-                  <div className="mt-14 mr-16 timedanimation flex flex-col pr-16  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300">
+                  <div className="mt-14 mr-18 timedanimation flex flex-col pr-16  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300">
                     <p className="text-6xl downhere text-timed">
                       Timed Challenge
                     </p>
@@ -721,6 +721,7 @@ function Game() {
               </div>
             </div>
             <div className="meshstyle bg-mesh bg-no-repeat bg-contain bg-center absolute top-7 right-40"></div>
+            <div className="w-screen h-screen flex items-center justify-end bg-bluepaint bg-no-repeat bg-contain bg-bottom absolute z-30 bot-0 "></div>
           </div>
           {/* landgrad*/}
           <div className="w-screen h-screen landgrad bg-white absolute z-10 top-0"></div>
