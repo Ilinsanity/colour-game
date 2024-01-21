@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         bluepaint: "url('/src/images/blue brush2.png')",
+        logo: "url('/src/images/logo.png')",
         mesh: "url('/src/images/meshes.png')",
         nund: "url('/src/images/fillSketch.png')",
         arrow: "url('/src/images/arrow.png')",

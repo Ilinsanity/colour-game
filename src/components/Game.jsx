@@ -666,34 +666,34 @@ function Game() {
 
       {showstart && (
         <div className="">
-          <div className="w-screen h-1/2 flex  bg-no-repeat bg-cover bg-bottom fixed z-30 bottom-0 justify-center svg-cont">
+          <div className="w-screen h-2/5 flex  bg-no-repeat bg-cover bg-bottom fixed z-30 -bottom-0 justify-center svg-cont ">
             <div className=" flex flex-col items-center justify-center ">
               <div className=" flex flex-col items-center justify-center">
                 <div
-                  className="flex mr-40 transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
+                  className="flex mr-40 transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300 absolute top-10"
                   onClick={setBg}
                 >
-                  <div className="bg-arrow bg-contain bg-no-repeat h-40 w-52 mr-4 mt-4 inline-block rot"></div>
-                  <div className="flex flex-col text-center startanimation">
-                    <p className="text-8xl sister text-sg">Start Game!</p>
-                    <p className="text-4xl downhere text-white">
+                  <div className="bg-arrow bg-contain bg-no-repeat h-40 w-52 mr-4 mt-4 inline-block rot pointer"></div>
+                  <div className="flex flex-col text-center startanimation pointer">
+                    <p className="text-8xl sister text-sg start-game">Start Game!</p>
+                    <p className="text-4xl downhere-small text-white absolute top-20 left-24 rotate-18">
                       play with unlimited time
                     </p>
                   </div>
                 </div>
 
                 <div className="flex">
-                  <div className="timedanimation flex flex-col pr-16  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300">
-                    <p className="text-7xl downhere text-timed">
+                  <div className="mt-14 mr-16 timedanimation flex flex-col pr-16  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300">
+                    <p className="text-6xl downhere text-timed">
                       Timed Challenge
                     </p>
-                    <p className="text-2xl downhere text-white">
+                    <p className="text-1xl downhere-small text-white time-header ml-3 absolute top-14">
                       Ready to test your skills?
                     </p>
                   </div>
-                  <div className="ldbdanimation flex flex-col text-right  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300 ">
-                    <p className="text-7xl downhere text-ldbd">LeaderBoards</p>
-                    <p className="text-2xl downhere text-white">
+                  <div className="mt-14 ldbdanimation flex flex-col text-right  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300 ">
+                    <p className="text-6xl downhere text-ldbd leaderboard-butt">LeaderBoards</p>
+                    <p className="text-1xl downhere-small text-white leaderboard-head absolute top-14 -right-2">
                       Check out the top scores!
                     </p>
                   </div>
@@ -704,7 +704,7 @@ function Game() {
           <div className="w-screen h-screen flex justify-start items-start z-20 relative ">
             <div className="flex absolute top-60 left-56">
               <div className="flex flex-col relative">
-                <p className="jah1 text-black p-0 ">
+                <p className="jah1 text-black p-0 color-title">
                   <span className="text-c1 colanim">C</span>
                   <span className="text-c2 colanim">o</span>
                   <span className="text-c3 colanim">l</span>
@@ -715,12 +715,12 @@ function Game() {
                 <div className="h-6 w-full bg-nund bg-contain bg-no-repeat absolute bottom-9 dashline"></div>
               </div>
               <div className="relative">
-                <p className="jah text-blindcol text-7xl absolute bottom-10 blind">
+                <p className="jah text-blindcol text-7xl absolute bottom-8 blind ml-1 mt-3">
                   Blind
                 </p>
               </div>
             </div>
-            <div className="meshstyle bg-mesh bg-no-repeat bg-contain bg-center absolute top-7 right-5"></div>
+            <div className="meshstyle bg-mesh bg-no-repeat bg-contain bg-center absolute top-7 right-40"></div>
           </div>
           {/* landgrad*/}
           <div className="w-screen h-screen landgrad bg-white absolute z-10 top-0"></div>
