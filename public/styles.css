@@ -49,6 +49,10 @@ body {
   cursor: pointer;
 }
 
+.rotate-24 {
+  transform: rotate(-2.462deg); 
+}
+
 .sister {
   font-family: "Love Ya Like A Sister", cursive;
   font-weight: 400;
@@ -56,6 +60,7 @@ body {
   letter-spacing: -4.112px;
   line-height: 124.529%;
 }
+
 
 .downhere {
   font-family: "Just Me Again Down Here", cursive;
@@ -496,6 +501,14 @@ background: linear-gradient(
   background-color: black;
 }
 
+.logo-grey {
+  color: #DADADA;
+}
+
+.bottom-100 {
+  bottom: 24rem;
+}
+
 .row1 {
 }
 .cont {
@@ -583,11 +596,16 @@ td {
 }
 td {
   border-radius: 100%;
+  cursor: pointer;
+}
+
+.h-500 {
+  height: 586px;
 }
 
 table {
   margin: 0 auto;
-  border-spacing: 30px;
+  border-spacing: 20px;
   border-collapse: separate;
 }
 
@@ -595,6 +613,9 @@ table {
   text-align: center;
 }
 
+.z-neg1 {
+  z-index:-1;
+}
 .showlevel {
   font-size: 10rem;
   font-family: "Fredoka One", cursive;
