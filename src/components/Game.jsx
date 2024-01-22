@@ -625,10 +625,11 @@ function Game() {
       {showgame && (
         <div className="w-screen h-screen flex flex-col justify-center items-center z-10 absolute">
           <div
-            className="bg-home bg-cover w-14 h-14 absolute top-10 left-20"
+            className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 hover:scale-105 pointer"
             onClick={BackToStart}
           ></div>
-          <div className="w-screen h-3/4 flex flex-col justify-center items-center bg-gb bg-cover bg-center">
+          <div className="bg-brushedge bg-cover w-vw absolute"></div>
+          <div className="w-screen h-3/5 flex flex-col justify-center items-center bg-gb bg-cover bg-center">
             <table className="">
               <tr>
                 <td
@@ -697,14 +698,14 @@ function Game() {
             <div className="levelcont flex justify-center items-center">
               <div className="h-6 w-52 bg-linescore bg-cover "></div>
               <h1
-                className="sister text-9xl ml-8 mr-8"
+                className="sister text-9xl ml-8 mr-8 "
                 style={{ color: lvlColour }}
               >
                 {level}
               </h1>
               <div className="h-6 w-52 bg-linescore bg-cover "></div>
             </div>
-            <div className="left-10 bottom-1/4 flex flex-col">
+            <div className="absolute left-20 w-56 rotate-24 bottom-44 flex flex-col">
               <p className="jah text-2xl text-white">How To Play</p>
               <p className="jah text-1xl text-white">
                 Pick the colour that doesn’t match the rest!!!! Tip: Turn your
@@ -757,7 +758,7 @@ function Game() {
             </div>
           </div>
           <div className="w-screen h-screen flex justify-start items-start z-20 relative ">
-            <div className="flex absolute top-60 left-56">
+            <div className="flex absolute bottom-96 mb-16 left-56">
               <div className="flex flex-col relative">
                 <p className="jah1 text-black p-0 color-title">
                   <span className="text-c1 colanim">C</span>
@@ -768,12 +769,12 @@ function Game() {
                   <span className="text-c6 colanim">r</span>
                 </p>
                 <div className="h-6 w-full bg-nund bg-contain bg-no-repeat absolute bottom-9 dashline"></div>
-                <p className="nanum text-4xl absolute bottom-0 ml-3">
+                <p className="logo-grey nanum text-4xl absolute bottom-0 ml-3">
                   By Issac Lin
                 </p>
               </div>
               <div className="relative">
-                <p className="jah text-blindcol text-7xl absolute bottom-8 blind ml-1 mt-3">
+                <p className="jah logo-grey text-7xl absolute bottom-8 blind ml-2 mt-3">
                   Blind
                 </p>
               </div>
