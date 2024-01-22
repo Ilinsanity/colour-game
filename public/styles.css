@@ -159,13 +159,13 @@ body {
 }
 
 .submit-button {
-  width: 111px;
-  height: 39px;
+  width: 148px;
+  height: 51px;
   cursor: pointer;
 }
 
 .skip {
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 0.4;
   cursor: pointer;
   height: 30px;
@@ -180,8 +180,9 @@ body {
 
 .name-input {
   border-bottom: 1px dashed #85CCFF;
-  height:35px;
-  width: 220px;
+  height:45px;
+  width: 260px;
+  text-align: left;
 }
 
 input {
