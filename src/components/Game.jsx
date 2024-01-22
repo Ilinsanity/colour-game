@@ -484,7 +484,7 @@ function Game() {
 			{endgame && (
 				<div className="Gameovercont z-20 absolute flex justify-center items-center">
 					<div className="bg-gameoverbrush gameover-brush absolute flex"></div>
-					<div className="w-3/4 h-max p-24 rounded relative">
+					<div className="w-3/4 h-max p-24 pt-32 rounded relative">
 						<p className="GameOverTitle text-white lineh-06">
 							Game Over!
 						</p>
@@ -609,20 +609,22 @@ function Game() {
 							</table>
 						</div>
 						<div className="flex flex-col w-max m-auto items-center">
-              <p className="downhere text-lb">Please enter your name</p>
-							<div className="flex name-input items-center justify-center">
-              <p className="text-4xl inscore mr-2">Name:</p>
+              <p className="downhere text-lb text-lg">Please enter your name</p>
+							<div className="flex name-input ">
+              <p className="text-5xl inscore mr-3">Name:</p>
               <input
 								onChange={(e) => setUsername(e.target.value)}
 								type="text"
 								id="ScoreName"
 								name="NameField"
 								maxlength="50"
-								className=" text-3xl inscore"
+								className=" text-5xl inscore text-white"
+                required
 							></input>
               
               </div>
-							<div className="bg-submitbutton submit-button mt-3 mb-1 hover:scale-110"></div>
+							<input type="submit" value=' ' className="bg-submitbutton submit-button mt-3 mb-1 hover:scale-110"></input>
+
 							<p className="downhere underline text-white skip hover:scale-110">
 								Skip
 							</p>

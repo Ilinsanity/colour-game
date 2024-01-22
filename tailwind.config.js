@@ -13,7 +13,7 @@ module.exports = {
         linescore: "url('/src/images/linescore.png')",
         gamebrush: "url('/src/images/Group 16(1).png')",
         gameoverbrush: "url('/src/images/Group 17(1).png')",
-        submitbutton: "url('/src/images/Group 12.svg')",
+        submitbutton: "url('/src/images/Group 12(1).svg')",
         namebox: "url('/src/images/Rectangle 14(1).png')"
       },
       colors: {
