@@ -11,7 +11,7 @@ module.exports = {
         gb: "url('/src/images/GB.png')",
         home: "url('/src/images/home-sketch 1.png')",
         linescore: "url('/src/images/linescore.png')",
-        brushedge: "url('/src/images/brush top.png')"
+        gamebrush: "url('/src/images/Group 16(1).png')"
       },
       colors: {
         gold: "#FFD700",

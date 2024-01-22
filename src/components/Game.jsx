@@ -628,8 +628,8 @@ function Game() {
             className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 pointer"
             onClick={BackToStart}
           ></div>
-          <div className="bg-brushedge bg-cover w-vw absolute"></div>
-          <div className="w-screen h-3/5 flex flex-col justify-center items-center bg-gb bg-cover bg-center">
+          <div className="bg-gamebrush w-screen h-500 z-neg1 absolute"></div>
+          <div className="w-screen h-3/5 flex flex-col justify-center items-center">
             <table className="">
               <tr>
                 <td
@@ -705,14 +705,16 @@ function Game() {
               </h1>
               <div className="h-6 w-52 bg-linescore bg-cover "></div>
             </div>
-            <div className="absolute left-20 w-56 rotate-24 bottom-44 flex flex-col">
+            <div className="absolute left-20 w-56 rotate-24 bottom-56 flex flex-col">
               <p className="jah text-2xl text-white">How To Play</p>
               <p className="jah text-1xl text-white">
                 Pick the colour that doesn’t match the rest!!!! Tip: Turn your
                 brightness up ;){" "}
               </p>
             </div>
+            
           </div>
+          
         </div>
       )}
 
