@@ -8,6 +8,9 @@ module.exports = {
         mesh: "url('/src/images/meshes.png')",
         nund: "url('/src/images/fillSketch.png')",
         arrow: "url('/src/images/arrow.png')",
+        gb: "url('/src/images/GB.png')",
+        home: "url('/src/images/home-sketch 1.png')",
+        linescore: "url('/src/images/linescore.png')",
       },
       colors: {
         gold: "#FFD700",

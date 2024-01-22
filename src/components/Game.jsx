@@ -76,7 +76,6 @@ function Game() {
 
     const array = [];
     docsSnap.forEach((doc) => {
-      console.log(doc.data());
       array.push(doc.data());
     });
     array.sort((a, b) => {
@@ -102,9 +101,7 @@ function Game() {
 
     try {
       addDoc(ref, data);
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
   async function writeUserData() {
     const playersRef = collection(firestore, "players");
@@ -239,7 +236,6 @@ function Game() {
     setBg();
   }
   function setBg() {
-    console.log(currentUsername);
     setshowgame(true);
     setStart(false);
     setlogin(false);
@@ -451,7 +447,7 @@ function Game() {
 
   const CheckA = (e) => {
     const c = e.target.getAttribute("id");
-    console.log(c);
+
     if (c == correct) {
       setBg();
       setlevel(level + 1);
@@ -598,70 +594,89 @@ function Game() {
         </div>
       )}
       {showgame && (
-        <table>
-          <tr>
-            <td
-              className="square1"
-              id="s1"
-              style={{ backgroundColor: c1 }}
-              onClick={CheckA}
-            ></td>
-            <td
-              className="square2"
-              id="s2"
-              style={{ backgroundColor: c2 }}
-              onClick={CheckA}
-            ></td>
-            <td
-              className="square3"
-              id="s3"
-              style={{ backgroundColor: c3 }}
-              onClick={CheckA}
-            ></td>
-          </tr>
+        <div className="w-screen h-screen flex flex-col justify-center items-center ">
+          <div
+            className="bg-home bg-cover w-14 h-14 absolute top-10 left-20"
+            onClick={BackToStart}
+          ></div>
+          <div className="w-screen h-3/4 bg-gb bg-cover bg-center flex flex-col justify-center items-center ">
+            <table className="">
+              <tr>
+                <td
+                  className="square1"
+                  id="s1"
+                  style={{ backgroundColor: c1 }}
+                  onClick={CheckA}
+                ></td>
+                <td
+                  className="square2"
+                  id="s2"
+                  style={{ backgroundColor: c2 }}
+                  onClick={CheckA}
+                ></td>
+                <td
+                  className="square3"
+                  id="s3"
+                  style={{ backgroundColor: c3 }}
+                  onClick={CheckA}
+                ></td>
+              </tr>
 
-          <tr>
-            <td
-              className="square4"
-              id="s4"
-              style={{ backgroundColor: c4 }}
-              onClick={CheckA}
-            ></td>
-            <td
-              className="square5"
-              id="s5"
-              style={{ backgroundColor: c5 }}
-              onClick={CheckA}
-            ></td>
-            <td
-              className="square6"
-              id="s6"
-              style={{ backgroundColor: c6 }}
-              onClick={CheckA}
-            ></td>
-          </tr>
+              <tr>
+                <td
+                  className="square4"
+                  id="s4"
+                  style={{ backgroundColor: c4 }}
+                  onClick={CheckA}
+                ></td>
+                <td
+                  className="square5"
+                  id="s5"
+                  style={{ backgroundColor: c5 }}
+                  onClick={CheckA}
+                ></td>
+                <td
+                  className="square6"
+                  id="s6"
+                  style={{ backgroundColor: c6 }}
+                  onClick={CheckA}
+                ></td>
+              </tr>
 
-          <tr>
-            <td
-              className="square7"
-              id="s7"
-              style={{ backgroundColor: c7 }}
-              onClick={CheckA}
-            ></td>
-            <td
-              className="square8"
-              id="s8"
-              style={{ backgroundColor: c8 }}
-              onClick={CheckA}
-            ></td>
-            <td
-              className="square9"
-              id="s9"
-              style={{ backgroundColor: c9 }}
-              onClick={CheckA}
-            ></td>
-          </tr>
-        </table>
+              <tr>
+                <td
+                  className="square7"
+                  id="s7"
+                  style={{ backgroundColor: c7 }}
+                  onClick={CheckA}
+                ></td>
+                <td
+                  className="square8"
+                  id="s8"
+                  style={{ backgroundColor: c8 }}
+                  onClick={CheckA}
+                ></td>
+                <td
+                  className="square9"
+                  id="s9"
+                  style={{ backgroundColor: c9 }}
+                  onClick={CheckA}
+                ></td>
+              </tr>
+            </table>
+
+            <div className="levelcont flex justify-center items-center">
+              <div className="h-6 w-52 bg-linescore bg-cover "></div>
+              <h1
+                className="sister text-9xl ml-8 mr-8"
+                style={{ color: lvlColour }}
+              >
+                {level}
+              </h1>
+              <div className="h-6 w-52 bg-linescore bg-cover "></div>
+            </div>
+          </div>
+        </div>
       )}
 
       {showstart && (
@@ -841,18 +856,6 @@ function Game() {
           </div>
         </div>
       )}
-
-      {showgame && (
-        <div className="levelcont">
-          <h1 className="showlevel" style={{ color: lvlColour }}>
-            {level}
-          </h1>
-          {/* {isLoggedin && (
-            <p className="showcurrenthighscore">{currentUserHighscore}</p>
-          )} */}
-        </div>
-      )}
-      {/* {showgame && <h1>{cdown}</h1>} */}
     </div>
   );
 }

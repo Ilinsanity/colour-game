@@ -23,7 +23,6 @@
 }
 
 body {
-  background-color: #b2beb5;
 }
 
 .jah {
@@ -525,55 +524,55 @@ td {
 }
 
 .square1 {
-  height: 19vh;
-  width: 19vh;
+  height: 13vh;
+  width: 13vh;
   /* background-color: #555; */
 }
 .square2 {
-  height: 19vh;
-  width: 19vh;
+  height: 13vh;
+  width: 13vh;
   background-color: #555;
 }
 
 .square3 {
-  height: 19vh;
-  width: 19vh;
+  height: 13vh;
+  width: 13vh;
   background-color: #555;
 }
 
 .square4 {
-  height: 19vh;
-  width: 19vh;
+  height: 13vh;
+  width: 13vh;
   background-color: #555;
 }
 
 .square5 {
-  height: 19vh;
-  width: 19vh;
+  height: 13vh;
+  width: 13vh;
   background-color: #555;
 }
 
 .square6 {
-  height: 19vh;
-  width: 19vh;
+  height: 13vh;
+  width: 13vh;
   background-color: #555;
 }
 
 .square7 {
-  height: 19vh;
-  width: 19vh;
+  height: 13vh;
+  width: 13vh;
   background-color: #555;
 }
 
 .square8 {
-  height: 19vh;
-  width: 19vh;
+  height: 13vh;
+  width: 13vh;
   background-color: #555;
 }
 
 .square9 {
-  height: 19vh;
-  width: 19vh;
+  height: 13vh;
+  width: 13vh;
   background-color: #555;
 }
 
@@ -589,6 +588,7 @@ td {
 table {
   margin: 0 auto;
   border-spacing: 30px;
+  border-collapse: separate;
 }
 
 .levelcont {
