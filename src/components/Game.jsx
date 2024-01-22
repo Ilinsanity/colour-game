@@ -737,7 +737,7 @@ function Game() {
                 </div>
 
                 <div className="flex">
-                  <div className="mt-14 mr-18 timedanimation flex flex-col pr-16  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300">
+                  <div className="mt-14 mr-20 timedanimation flex flex-col pr-16  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300">
                     <p className="text-6xl downhere text-timed">
                       Timed Challenge
                     </p>
