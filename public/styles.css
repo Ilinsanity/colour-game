@@ -43,7 +43,7 @@ body {
 }
 
 .start-game {
-  transform: rotate(0.067deg); 
+  transform: rotate(0.067deg);
 }
 
 .pointer {
@@ -54,7 +54,7 @@ body {
   font-family: "Love Ya Like A Sister", cursive;
   font-weight: 400;
   font-style: normal;
-  letter-spacing: -4.112px; 
+  letter-spacing: -4.112px;
   line-height: 124.529%;
 }
 
@@ -63,31 +63,39 @@ body {
   font-weight: 400;
   font-style: normal;
   letter-spacing: -3.192px;
-  line-height: 149.821%
+  line-height: 149.821%;
 }
 
 .downhere-small {
   font-family: "Just Me Again Down Here", cursive;
   font-weight: 400;
   font-style: normal;
-  letter-spacing: -0.929px; 
-  line-height: 149.821%
+  letter-spacing: -0.929px;
+  line-height: 149.821%;
+}
+
+.nanum {
+  font-family: "Nanum Pen Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: #666666;
+  animation: fadeIn 1.5s ease-in-out forwards;
 }
 
 .leaderboard-head {
-  transform: rotate(1.599deg); 
+  transform: rotate(1.599deg);
 }
 
 .leaderboard-butt {
-  transform: rotate(2.57deg); 
+  transform: rotate(2.57deg);
 }
 
 .time-header {
-  transform: rotate(-0.916deg); 
+  transform: rotate(-0.916deg);
 }
 
 .rotate-18 {
-  transform: rotate(1.862deg); 
+  transform: rotate(1.862deg);
 }
 
 .svg-cont {
@@ -184,7 +192,7 @@ body {
 }
 
 .color-title {
-  letter-spacing: -4.112px; 
+  letter-spacing: -4.112px;
 }
 
 .Lbutton:hover {
@@ -270,7 +278,7 @@ background: linear-gradient(
     hsla(171, 80%, 69%, 1) 88.88888888888889%,
     hsla(163, 100%, 75%, 1) 100%
   ); */
-  background: linear-gradient(to right, #33008D 0%,  #0D134D 30%, #614DB2 100% );
+  background: linear-gradient(to right, #33008d 0%, #0d134d 30%, #614db2 100%);
   background-size: 400% 400%;
   animation: gradient 12s ease infinite;
 }

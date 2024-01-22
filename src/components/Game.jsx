@@ -675,7 +675,9 @@ function Game() {
                 >
                   <div className="bg-arrow bg-contain bg-no-repeat h-40 w-52 mr-4 mt-4 inline-block rot pointer"></div>
                   <div className="flex flex-col text-center startanimation pointer">
-                    <p className="text-8xl sister text-sg start-game">Start Game!</p>
+                    <p className="text-8xl sister text-sg start-game">
+                      Start Game!
+                    </p>
                     <p className="text-4xl downhere-small text-white absolute top-20 left-24 rotate-18">
                       play with unlimited time
                     </p>
@@ -692,7 +694,9 @@ function Game() {
                     </p>
                   </div>
                   <div className="mt-14 ldbdanimation flex flex-col text-right  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300 ">
-                    <p className="text-6xl downhere text-ldbd leaderboard-butt">LeaderBoards</p>
+                    <p className="text-6xl downhere text-ldbd leaderboard-butt">
+                      LeaderBoards
+                    </p>
                     <p className="text-1xl downhere-small text-white leaderboard-head absolute top-14 -right-2">
                       Check out the top scores!
                     </p>
@@ -713,6 +717,9 @@ function Game() {
                   <span className="text-c6 colanim">r</span>
                 </p>
                 <div className="h-6 w-full bg-nund bg-contain bg-no-repeat absolute bottom-9 dashline"></div>
+                <p className="nanum text-4xl absolute bottom-0 ml-3">
+                  By Issac Lin
+                </p>
               </div>
               <div className="relative">
                 <p className="jah text-blindcol text-7xl absolute bottom-8 blind ml-1 mt-3">
