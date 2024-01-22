@@ -625,7 +625,7 @@ function Game() {
       {showgame && (
         <div className="w-screen h-screen flex flex-col justify-center items-center z-10 absolute">
           <div
-            className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 hover:scale-105 pointer"
+            className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 pointer"
             onClick={BackToStart}
           ></div>
           <div className="bg-brushedge bg-cover w-vw absolute"></div>
