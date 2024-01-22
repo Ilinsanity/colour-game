@@ -61,8 +61,8 @@ body {
   font-family: "Just Me Again Down Here", cursive;
   font-weight: 400;
   font-style: normal;
-  letter-spacing: -3.192px;
-  line-height: 149.821%;
+  /* letter-spacing: -3.192px;
+  line-height: 149.821%; */
 }
 
 .downhere-small {
@@ -612,22 +612,32 @@ table {
   height: 100vh;
   width: 100vw;
   text-align: center;
-  background: #e52d27; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #b31217,
-    #e52d27
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #b31217,
-    #e52d27
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  backdrop-filter: blur(10px);
 }
 .GameOverTitle {
-  font-size: 9rem;
-  font-family: "Fredoka One", cursive;
+  font-size: 6rem;
+  font-family: "Love Ya Like A Sister", cursive;
+  font-weight: 400;
+  font-style: normal;
   color: black;
+}
+
+.inscore {
+  color: #85ccff;
+  font-family: "Just Another Hand";
+
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.inscore::placeholder {
+  color: #85ccff;
+  font-family: "Just Another Hand";
+
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .score {
@@ -675,7 +685,7 @@ table {
 }
 
 .results {
-  padding-top: 1%;
+  /* padding-top: 1%; */
   display: flex;
   align-items: center;
   justify-content: center;

@@ -24,6 +24,8 @@ module.exports = {
         sg: "#C2FFC0",
         timed: "#FF7979",
         ldbd: "#86CCFF",
+        score: "#A7FF7D",
+        gameovercont: "#395698",
       },
     },
   },

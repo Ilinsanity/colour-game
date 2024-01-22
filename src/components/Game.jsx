@@ -193,16 +193,16 @@ function Game() {
   }
   function GameOver() {
     setend(true);
-    setshowgame(false);
-    getHighscore();
-    const docRef = doc(firestore, "players", currentUsername);
-    if (currentUserHighscore < level) {
-      const updates = {
-        highscore: level,
-      };
+    // setshowgame(false);
+    // getHighscore();
+    // const docRef = doc(firestore, "players", currentUsername);
+    // if (currentUserHighscore < level) {
+    //   const updates = {
+    //     highscore: level,
+    //   };
 
-      updateDoc(docRef, updates);
-    }
+    //   updateDoc(docRef, updates);
+    // }
 
     // setStart(false);
   }
@@ -478,128 +478,157 @@ function Game() {
   return (
     <div className="gamecont">
       {endgame && (
-        <div className="Gameovercont">
-          {hasUser && (
-            <h3 className="profile">
-              <i class="fas fa-user"></i>
-              {currentUsername}
-            </h3>
-          )}
-          <p className="GameOverTitle">Game Over</p>
+        <div className="Gameovercont z-20 absolute flex justify-center items-center">
+          <div className="w-3/4 h-max bg-gameovercont p-24 rounded">
+            <p className="GameOverTitle">Game Over</p>
 
-          <p className="score">Your Score: {level}</p>
-          {isLoggedin && (
-            <p className="prevscore">Your Highest: {currentUserHighscore}</p>
-          )}
-          <div className="results">
-            <table>
-              <tr>
-                <td
-                  className="endcircle1"
-                  id="s1"
-                  style={{
-                    backgroundColor: c1,
-                    border:
-                      correct == "s1" ? "4px dashed green" : "2px solid black",
-                  }}
-                ></td>
-                <td
-                  className="endcircle2"
-                  id="s2"
-                  style={{
-                    backgroundColor: c2,
-                    border:
-                      correct == "s2" ? "4px dashed green" : "2px solid black",
-                  }}
-                ></td>
-                <td
-                  className="endcircle3"
-                  id="s3"
-                  style={{
-                    backgroundColor: c3,
-                    border:
-                      correct == "s3" ? "4px dashed green" : "2px solid black",
-                  }}
-                ></td>
-              </tr>
+            <p className="downhere text-4xl text-score">Score: {level}</p>
+            {isLoggedin && (
+              <p className="prevscore">Your Highest: {currentUserHighscore}</p>
+            )}
+            <div className="results">
+              <table>
+                <tr>
+                  <td
+                    className="endcircle1"
+                    id="s1"
+                    style={{
+                      backgroundColor: c1,
+                      border:
+                        correct == "s1"
+                          ? "4px dashed green"
+                          : "2px solid black",
+                    }}
+                  ></td>
+                  <td
+                    className="endcircle2"
+                    id="s2"
+                    style={{
+                      backgroundColor: c2,
+                      border:
+                        correct == "s2"
+                          ? "4px dashed green"
+                          : "2px solid black",
+                    }}
+                  ></td>
+                  <td
+                    className="endcircle3"
+                    id="s3"
+                    style={{
+                      backgroundColor: c3,
+                      border:
+                        correct == "s3"
+                          ? "4px dashed green"
+                          : "2px solid black",
+                    }}
+                  ></td>
+                </tr>
 
-              <tr>
-                <td
-                  className="endcircle4"
-                  id="s4"
-                  style={{
-                    backgroundColor: c4,
-                    border:
-                      correct == "s4" ? "4px dashed green" : "2px solid black",
-                  }}
-                ></td>
-                <td
-                  className="endcircle5"
-                  id="s5"
-                  style={{
-                    backgroundColor: c5,
-                    border:
-                      correct == "s5" ? "4px dashed green" : "2px solid black",
-                  }}
-                ></td>
-                <td
-                  className="endcircle6"
-                  id="s6"
-                  style={{
-                    backgroundColor: c6,
-                    border:
-                      correct == "s6" ? "4px dashed green" : "2px solid black",
-                  }}
-                ></td>
-              </tr>
+                <tr>
+                  <td
+                    className="endcircle4"
+                    id="s4"
+                    style={{
+                      backgroundColor: c4,
+                      border:
+                        correct == "s4"
+                          ? "4px dashed green"
+                          : "2px solid black",
+                    }}
+                  ></td>
+                  <td
+                    className="endcircle5"
+                    id="s5"
+                    style={{
+                      backgroundColor: c5,
+                      border:
+                        correct == "s5"
+                          ? "4px dashed green"
+                          : "2px solid black",
+                    }}
+                  ></td>
+                  <td
+                    className="endcircle6"
+                    id="s6"
+                    style={{
+                      backgroundColor: c6,
+                      border:
+                        correct == "s6"
+                          ? "4px dashed green"
+                          : "2px solid black",
+                    }}
+                  ></td>
+                </tr>
 
-              <tr>
-                <td
-                  className="endcircle7"
-                  id="s7"
-                  style={{
-                    backgroundColor: c7,
-                    border:
-                      correct == "s7" ? "4px dashed green" : "2px solid black",
-                  }}
-                ></td>
-                <td
-                  className="endcircle8"
-                  id="s8"
-                  style={{
-                    backgroundColor: c8,
-                    border:
-                      correct == "s8" ? "4px dashed green" : "2px solid black",
-                  }}
-                ></td>
-                <td
-                  className="endcircle9"
-                  id="s9"
-                  style={{
-                    backgroundColor: c9,
-                    border:
-                      correct == "s9" ? "4px dashed green" : "2px solid black",
-                  }}
-                ></td>
-              </tr>
-            </table>
+                <tr>
+                  <td
+                    className="endcircle7"
+                    id="s7"
+                    style={{
+                      backgroundColor: c7,
+                      border:
+                        correct == "s7"
+                          ? "4px dashed green"
+                          : "2px solid black",
+                    }}
+                  ></td>
+                  <td
+                    className="endcircle8"
+                    id="s8"
+                    style={{
+                      backgroundColor: c8,
+                      border:
+                        correct == "s8"
+                          ? "4px dashed green"
+                          : "2px solid black",
+                    }}
+                  ></td>
+                  <td
+                    className="endcircle9"
+                    id="s9"
+                    style={{
+                      backgroundColor: c9,
+                      border:
+                        correct == "s9"
+                          ? "4px dashed green"
+                          : "2px solid black",
+                    }}
+                  ></td>
+                </tr>
+              </table>
+            </div>
+            <div className="flex flex-col w-max m-auto">
+              <input
+                onChange={(e) => setUsername(e.target.value)}
+                type="text"
+                id="ScoreName"
+                name="NameField"
+                placeholder="Name:                                             "
+                maxlength="50"
+                className="w-max h-14 text-5xl inscore bg-transparent underline decoration-dashed"
+              ></input>
+              <p className="jah w-fit text-5xl pl-7 pr-7 pt-2  text-yellow-500 m-auto mt-4 border-dashed border-4 border-yellow-500 inline-block">
+                SUBMIT
+              </p>
+              <p className="downhere text-3xl underline text-white ">Skip</p>
+            </div>
+
+            {/* <button className="Restartbutton" onClick={restartGame}>
+              Try Again
+            </button>
+            <button className="Restartbutton" onClick={BackToStart}>
+              Back to Main Screen
+            </button> */}
           </div>
-
-          <button className="Restartbutton" onClick={restartGame}>
-            Try Again
-          </button>
-          <button className="Restartbutton" onClick={BackToStart}>
-            Back to Main Screen
-          </button>
         </div>
       )}
       {showgame && (
-        <div className="w-screen h-screen flex flex-col justify-center items-center ">
+        <div className="w-screen h-screen flex flex-col justify-center items-center z-10 absolute">
           <div
             className="bg-home bg-cover w-14 h-14 absolute top-10 left-20"
             onClick={BackToStart}
           ></div>
-          <div className="w-screen h-3/4 bg-gb bg-cover bg-center flex flex-col justify-center items-center ">
+          <div className="w-screen h-3/4 flex flex-col justify-center items-center bg-gb bg-cover bg-center">
             <table className="">
               <tr>
                 <td
@@ -674,6 +703,13 @@ function Game() {
                 {level}
               </h1>
               <div className="h-6 w-52 bg-linescore bg-cover "></div>
+            </div>
+            <div className="left-10 bottom-1/4 flex flex-col">
+              <p className="jah text-2xl text-white">How To Play</p>
+              <p className="jah text-1xl text-white">
+                Pick the colour that doesn’t match the rest!!!! Tip: Turn your
+                brightness up ;){" "}
+              </p>
             </div>
           </div>
         </div>
