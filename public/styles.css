@@ -152,11 +152,60 @@ body {
   }
 }
 .meshstyle {
-  width: 46rem;
-  height: 29rem;
+  width: 47rem;
+  height: 40rem;
   opacity: 0;
   animation: fadeIn 1.5s ease-out forwards;
 }
+
+.submit-button {
+  width: 111px;
+  height: 39px;
+  cursor: pointer;
+}
+
+.skip {
+  font-size: 1rem;
+  line-height: 0.4;
+  cursor: pointer;
+  height: 30px;
+  width: 100%;
+}
+
+.namebox {
+  width: 225px;
+  height: 3px;
+}
+
+
+.name-input {
+  border-bottom: 1px dashed #85CCFF;
+  height:35px;
+  width: 220px;
+}
+
+input {
+  background: transparent;
+  border: none;
+  height: 45px;
+  outline: none;
+  box-shadow: none;
+  padding-top: 5px;
+  text-align: bottom;
+  padding: 0;
+  width: 160px;
+}
+
+input:focus {
+  outline-style: none;
+  box-shadow: none;
+}
+
+.lineh-06 {
+  font-size: 8rem;
+  line-height: 0.7;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -589,6 +638,12 @@ td {
   background-color: #555;
 }
 
+.gameover-brush {
+  width: 1241px;
+  height: 598px;
+  z-index: -1;
+}
+
 table,
 th,
 td {
@@ -636,11 +691,12 @@ table {
   backdrop-filter: blur(10px);
 }
 .GameOverTitle {
-  font-size: 6rem;
+  font-size: 8rem;
   font-family: "Love Ya Like A Sister", cursive;
   font-weight: 400;
   font-style: normal;
   color: black;
+  letter-spacing: -14.033px;
 }
 
 .inscore {
@@ -713,54 +769,67 @@ table {
 }
 
 .endcircle1 {
-  height: 10vh;
-  width: 10vh;
+  height: 6vh;
+  width: 6vh;
   /* background-color: #555; */
+    cursor: default;
 }
 .endcircle2 {
-  height: 10vh;
-  width: 10vh;
+  height: 6vh;
+  width: 6vh;
   background-color: #555;
+    cursor: default;
 }
 
 .endcircle3 {
-  height: 10vh;
-  width: 10vh;
+  height: 6vh;
+  width: 6vh;
   background-color: #555;
+  cursor: default;
 }
 
 .endcircle4 {
-  height: 10vh;
-  width: 10vh;
+  height: 6vh;
+  width: 6vh;
   background-color: #555;
+    cursor: default;
 }
 
 .endcircle5 {
-  height: 10vh;
-  width: 10vh;
+  height: 6vh;
+  width: 6vh;
   background-color: #555;
+    cursor: default;
 }
 
 .endcircle6 {
-  height: 10vh;
-  width: 10vh;
+  height: 6vh;
+  width: 6vh;
   background-color: #555;
+    cursor: default;
 }
 
 .endcircle7 {
-  height: 10vh;
-  width: 10vh;
+  height: 6vh;
+  width: 6vh;
   background-color: #555;
+    cursor: default;
 }
 
 .endcircle8 {
-  height: 10vh;
-  width: 10vh;
+  height: 6vh;
+  width: 6vh;
   background-color: #555;
+    cursor: default;
 }
 
 .endcircle9 {
-  height: 10vh;
-  width: 10vh;
+  height: 6vh;
+  width: 6vh;
   background-color: #555;
+    cursor: default;
+}
+
+.endtab {
+  border-spacing: 8px;
 }
