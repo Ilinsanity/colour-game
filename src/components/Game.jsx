@@ -30,8 +30,6 @@ function Game() {
 
   const [correct, setcorrect] = useState("c");
   const [showgame, setshowgame] = useState(false);
-  const [timed, settimed] = useState(false);
-  const [time, settime] = useState(0);
   const [showstart, setStart] = useState(true);
   const [endgame1, setend1] = useState(false);
   const [endgame2, setend2] = useState(false);
@@ -45,6 +43,8 @@ function Game() {
   const [currentUserHighscore, setcurrentUserHighscore] = useState(0);
   const [isLoggedin, setloggedIn] = useState(false);
   const [LeaderBoard, setLeaderBoard] = useState([]);
+  const [leaderboardPage, setLeaderboardPage] = useState(false);
+  const [toggleLeaderboard, setToggleLeaderboard] = useState(false);
   // const [cdown, setcdown] = useState(10);
 
   const cdown = 10;
@@ -201,6 +201,7 @@ function Game() {
     setend2(false);
     setlevel(0);
     fetchLeaderBoard();
+    setLeaderboardPage(false);
   }
 
   function Logout() {
@@ -222,11 +223,25 @@ function Game() {
     setend2(false);
     setBg();
   }
+
+  function showLeaderboard() {
+    setLeaderboardPage(true);
+    setStart(false);
+    setlogin(false);
+  }
+
+  function setLeaderBoardRegular() {
+    setToggleLeaderboard(false);
+  }
+
+  function setLeaderBoardTimed() {
+    setToggleLeaderboard(true);
+  }
+
   function setBg() {
     setshowgame(true);
     setStart(false);
     setlogin(false);
-
     var shade = 10;
 
     // const randomColor = "rgb(" + r + "," + g + "," + b + ")";
@@ -628,16 +643,9 @@ function Game() {
         <div className="Gameovercont z-20 absolute flex justify-center items-center">
           <div className="bg-gameoverbrush gameover-brush absolute flex"></div>
 
-          <div className="w-3/4 h-max p-24 pt-32 rounded relative flex justify-center ">
-            <div className="w-14 h-14 absolute top-20 left-1/4 pointer">
-              <div
-                className="bg-home2 bg-cover w-14 h-14  pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
-                onClick={BackToStart}
-              ></div>
-            </div>
-
+          <div className="w-3/4 h-max p-24 pt-32 rounded relative">
             <p
-              className="w-max GameOverTitle text-white lineh-07 flex justify-center items-center transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
+              className="GameOverTitle text-white lineh-07 flex justify-center items-center"
               onClick={restartGame}
             >
               <span className="arrowspan flex justify-center items-center">
@@ -664,12 +672,6 @@ function Game() {
           ></div>
           <div className="bg-gamebrush w-screen h-500 z-neg1 absolute"></div>
           <div className="w-screen h-3/5 flex flex-col justify-center items-center">
-            <div className="flex absolute top-1/4 left-1/4 items-center">
-              <div className="bg-clock bg-cover w-14 h-14  pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"></div>
-              <p className="downhere text-8xl ml-3" id="countdown">
-                {time}
-              </p>
-            </div>
             <table className="">
               <tr>
                 <td
@@ -777,16 +779,19 @@ function Game() {
                 </div>
 
                 <div className="flex">
-                  <div className="mt-14 mr-20 timedanimation flex flex-col pr-16">
-                    <p className="text-6xl downhere text-timed transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300">
+                  <div className="mt-14 mr-20 timedanimation flex flex-col pr-16  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300">
+                    <p className="text-6xl downhere text-timed">
                       Timed Challenge
                     </p>
                     <p className="text-1xl downhere-small text-white time-header ml-3 absolute top-14">
                       Ready to test your skills?
                     </p>
                   </div>
-                  <div className="mt-14 ldbdanimation flex flex-col text-right transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300 ">
-                    <p className="text-6xl downhere text-ldbd leaderboard-butt transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300">
+                  <div
+                    className="mt-14 ldbdanimation flex flex-col text-right  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300 pointer hover:-translate-y-1 hover:scale-110  duration-300"
+                    onClick={showLeaderboard}
+                  >
+                    <p className="text-6xl downhere text-ldbd leaderboard-butt">
                       LeaderBoards
                     </p>
                     <p className="text-1xl downhere-small text-white leaderboard-head absolute top-14 -right-2">
@@ -898,38 +903,77 @@ function Game() {
         </div>
       )}
 
-      {showRegister && (
-        <div>
-          <div className="LoginContainer">
-            <h1 className="logintitle">Register</h1>
-            <TextField
-              className="Username"
-              id="standard-basic"
-              label="Username"
-              variant="standard"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <TextField
-              className="Password"
-              id="standard-basic"
-              label="Password"
-              variant="standard"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <TextField
-              className="Password"
-              id="standard-basic"
-              label="Confirm Password"
-              variant="standard"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <button onClick={CheckRegister} className="loginbutton">
-              Register
-            </button>
-            <p className="error">{ErrorChange}</p>
-            <button onClick={SLogin} className="loginbutton">
-              Back to Login
-            </button>
+      {leaderboardPage && (
+        <div className="w-screen h-screen flex flex-col justify-left items-left z-10 absolute">
+          <div
+            className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 pointer hover:scale-105 z-50"
+            onClick={BackToStart}
+          ></div>
+          <div className="bg-purplebru w-full h-full absolute bg-cover"></div>
+          <div className="leaderboard-container z-50">
+            <div className="leaderboard-title-container sister-leaderboard ">
+              <h1 className="leaderboard-title">Leaderboards</h1>
+              <div className="leaderboard-section-container ">
+                <h4
+                  className={
+                    !toggleLeaderboard
+                      ? "selectedLeaderboard pointer"
+                      : "pointer hover:scale-105"
+                  }
+                  onClick={() => setToggleLeaderboard(false)}
+                >
+                  Regular
+                </h4>
+                <div>|</div>
+                <h4
+                  className={
+                    toggleLeaderboard
+                      ? "selectedLeaderboard pointer"
+                      : "pointer hover:scale-105"
+                  }
+                  onClick={() => setToggleLeaderboard(true)}
+                >
+                  Timed
+                </h4>
+              </div>
+            </div>
+            <div className="leaderboard-body downhere">
+              <div className="leaderboard-column">
+                <table className="leaderboard-table">
+                  <tr>
+                    <td className="leaderboard-data">Rank</td>
+                    <h3>|</h3>
+                    <td className="leaderboard-data">Name</td>
+                    <h3>|</h3>
+                    <td className="leaderboard-data">Score</td>
+                  </tr>
+                </table>
+              </div>
+
+              <div className="leaderboard-column">
+                <table className="leaderboard-table">
+                  <tr>
+                    <td className="leaderboard-data">Rank</td>
+                    <h3>|</h3>
+                    <td className="leaderboard-data">Name</td>
+                    <h3>|</h3>
+                    <td className="leaderboard-data">Score</td>
+                  </tr>
+                </table>
+              </div>
+
+              <div className="leaderboard-column">
+                <table className="leaderboard-table">
+                  <tr>
+                    <td className="leaderboard-data">Rank</td>
+                    <h3>|</h3>
+                    <td className="leaderboard-data">Name</td>
+                    <h3>|</h3>
+                    <td className="leaderboard-data">Score</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       )}
