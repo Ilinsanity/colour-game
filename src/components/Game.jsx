@@ -667,20 +667,20 @@ function Game() {
           <div className="bg-gameoverbrush gameover-brush absolute flex"></div>
 
           <div className="w-3/4 h-max p-24 pt-32 rounded relative flex justify-center ">
-            <div className="w-14 h-14 absolute top-20 left-1/4 pointer">
+            <div className="w-14 h-14 absolute top-12rem mr-custom2 custom-home-margin pointer">
               <div
                 className="bg-home2 bg-cover w-14 h-14  pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
                 onClick={BackToStart}
               ></div>
             </div>
             <p
-              className="GameOverTitle text-white lineh-07 flex justify-center items-center transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
+              className="GameOverTitle text-white lineh-07 pointer flex justify-center items-center transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
               onClick={restartGame}
             >
-              <span className="arrowspan flex justify-center items-center">
-                >
+              <span className="arrowspan flex justify-center items-center mr-4">
+                &gt;
               </span>
-              Play Again?
+              <span className="play-again">Play Again?</span>
             </p>
 
             {/* <button className="Restartbutton" onClick={restartGame}>
@@ -696,7 +696,7 @@ function Game() {
       {showgame && (
         <div className="w-screen h-screen flex flex-col justify-center items-center z-10 absolute">
           <div
-            className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 pointer"
+            className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
             onClick={BackToStart}
           ></div>
           <div className="bg-gamebrush w-screen h-500 z-neg1 absolute"></div>
@@ -789,11 +789,11 @@ function Game() {
 
       {showstart && (
         <div className="">
-          <div className="w-screen h-80 flex  bg-no-repeat bg-cover bg-bottom fixed z-30 -bottom-0 justify-center svg-cont ">
+          <div className="w-screen h-80 flex  bg-no-repeat bg-cover bg-bottom fixed z-30 -bottom-6 justify-center svg-cont ">
             <div className=" flex flex-col items-center justify-center ">
               <div className=" flex flex-col items-center justify-center">
                 <div
-                  className="flex mr-40 transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300 absolute top-7"
+                  className="flex mr-40 transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300 absolute top-4"
                   onClick={setBg}
                 >
                   <div className="bg-arrow bg-contain bg-no-repeat h-38 w-48 mr-4 mt-4 inline-block rot pointer"></div>
@@ -935,7 +935,7 @@ function Game() {
       {leaderboardPage && (
         <div className="w-screen h-screen flex flex-col justify-left items-left z-10 absolute">
           <div
-            className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 pointer hover:scale-105 z-50"
+            className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300 z-50"
             onClick={BackToStart}
           ></div>
           <div className="bg-purplebru w-full h-full absolute bg-cover"></div>

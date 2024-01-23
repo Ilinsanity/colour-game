@@ -249,7 +249,17 @@ input:focus {
 }
 
 .arrowspan {
-  font-size: 17rem;
+  font-size: 23rem;
+  line-height: 0;
+}
+
+.play-again {
+  padding-top: 42px;
+  line-height: 50%
+}
+
+.custom-home-margin {
+  margin-top: -10.5rem;
 }
 
 @keyframes fadeIn {
@@ -263,6 +273,15 @@ input:focus {
     transform: scale(1);
   }
 }
+
+.mr-custom2 {
+  margin-right: 880px;
+}
+
+.left-4p {
+  left: 0.1vw;
+}
+
 .landing {
   text-align: center;
   width: 100%;
