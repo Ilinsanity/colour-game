@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import { getDatabase, ref, set } from "firebase/database";
 import { firestore } from "../firebase_setup";
 import { useRef } from "react";
+import $ from jQuery;
 import {
   addDoc,
   collection,
@@ -24,7 +25,7 @@ function Game() {
   const [c7, setC7] = useState("white");
   const [c8, setC8] = useState("white");
   const [c9, setC9] = useState("white");
-
+  let interval = null;
   const [lvlColour, setlvlColour] = useState("black");
   const [lvlender, setlvlender] = useState("black");
 
@@ -447,7 +448,29 @@ function Game() {
     }
     // StartTimer(10);
   }
+  function timer() {
+    var timer = 60 * 5,
+      minutes,
+      seconds;
 
+    interval = setInterval(() => {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      $("#countdown").text(
+        "Tiempo restante para actualización de datos " + minutes + ":" + seconds
+      );
+
+      if (--timer < 0) {
+        timer = duration;
+      }
+
+      if (interval !== null) clearInterval(interval);
+    }, 1000);
+  }
   const CheckA = (e) => {
     const c = e.target.getAttribute("id");
 
