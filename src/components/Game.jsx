@@ -501,7 +501,7 @@ function Game() {
   }
   const [refreshId, setRefreshId] = useState();
   function StartTimer() {
-    let seconds = 10;
+    let seconds = 11;
     const myInterval = setInterval(function () {
       seconds--;
       document.getElementById("countdown").innerText = seconds;
@@ -761,7 +761,7 @@ function Game() {
               <div className="flex absolute top-1/4 left-1/4 items-center">
                 <div className="bg-clock bg-cover w-14 h-14  pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"></div>
                 <p className="spacemono text-6xl ml-3" id="countdown">
-                  5
+                  10
                 </p>
               </div>
             )}

@@ -262,7 +262,7 @@ input:focus {
 
 .play-again {
   padding-top: 42px;
-  line-height: 50%
+  line-height: 50%;
 }
 
 .custom-home-margin {
@@ -909,4 +909,5 @@ table {
 .leaderboard-data {
   border: none;
   cursor: default;
+  animation: fadeInLeft 1s ease-in-out forwards;
 }
