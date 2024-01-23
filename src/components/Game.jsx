@@ -30,6 +30,8 @@ function Game() {
 
   const [correct, setcorrect] = useState("c");
   const [showgame, setshowgame] = useState(false);
+  const [timed, settimed] = useState(false);
+  const [time, settime] = useState(0);
   const [showstart, setStart] = useState(true);
   const [endgame1, setend1] = useState(false);
   const [endgame2, setend2] = useState(false);
@@ -224,6 +226,7 @@ function Game() {
     setshowgame(true);
     setStart(false);
     setlogin(false);
+
     var shade = 10;
 
     // const randomColor = "rgb(" + r + "," + g + "," + b + ")";
@@ -625,9 +628,16 @@ function Game() {
         <div className="Gameovercont z-20 absolute flex justify-center items-center">
           <div className="bg-gameoverbrush gameover-brush absolute flex"></div>
 
-          <div className="w-3/4 h-max p-24 pt-32 rounded relative">
+          <div className="w-3/4 h-max p-24 pt-32 rounded relative flex justify-center ">
+            <div className="w-14 h-14 absolute top-20 left-1/4 pointer">
+              <div
+                className="bg-home2 bg-cover w-14 h-14  pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
+                onClick={BackToStart}
+              ></div>
+            </div>
+
             <p
-              className="GameOverTitle text-white lineh-07 flex justify-center items-center"
+              className="w-max GameOverTitle text-white lineh-07 flex justify-center items-center transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
               onClick={restartGame}
             >
               <span className="arrowspan flex justify-center items-center">
@@ -654,6 +664,12 @@ function Game() {
           ></div>
           <div className="bg-gamebrush w-screen h-500 z-neg1 absolute"></div>
           <div className="w-screen h-3/5 flex flex-col justify-center items-center">
+            <div className="flex absolute top-1/4 left-1/4 items-center">
+              <div className="bg-clock bg-cover w-14 h-14  pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"></div>
+              <p className="downhere text-8xl ml-3" id="countdown">
+                {time}
+              </p>
+            </div>
             <table className="">
               <tr>
                 <td
@@ -761,16 +777,16 @@ function Game() {
                 </div>
 
                 <div className="flex">
-                  <div className="mt-14 mr-20 timedanimation flex flex-col pr-16  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300">
-                    <p className="text-6xl downhere text-timed">
+                  <div className="mt-14 mr-20 timedanimation flex flex-col pr-16">
+                    <p className="text-6xl downhere text-timed transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300">
                       Timed Challenge
                     </p>
                     <p className="text-1xl downhere-small text-white time-header ml-3 absolute top-14">
                       Ready to test your skills?
                     </p>
                   </div>
-                  <div className="mt-14 ldbdanimation flex flex-col text-right  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300 ">
-                    <p className="text-6xl downhere text-ldbd leaderboard-butt">
+                  <div className="mt-14 ldbdanimation flex flex-col text-right transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300 ">
+                    <p className="text-6xl downhere text-ldbd leaderboard-butt transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300">
                       LeaderBoards
                     </p>
                     <p className="text-1xl downhere-small text-white leaderboard-head absolute top-14 -right-2">
