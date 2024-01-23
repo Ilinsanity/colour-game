@@ -789,7 +789,7 @@ function Game() {
 
       {showstart && (
         <div className="">
-          <div className="w-screen h-80 flex  bg-no-repeat bg-cover bg-bottom  fixed z-30 -bottom-0 justify-center svg-cont ">
+          <div className="w-screen h-80 flex  bg-no-repeat bg-cover bg-bottom fixed z-30 -bottom-0 justify-center svg-cont ">
             <div className=" flex flex-col items-center justify-center ">
               <div className=" flex flex-col items-center justify-center">
                 <div
