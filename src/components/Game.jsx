@@ -920,7 +920,7 @@ function Game() {
 			{leaderboardPage && (
 				<div className="w-screen h-screen flex flex-col justify-left items-left z-10 absolute">
 					<div
-						className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 pointer hover:scale-105"
+						className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 pointer hover:scale-105 z-50"
 						onClick={BackToStart}
 					></div>
           <div className="bg-purplebru w-full h-full absolute bg-cover"></div>
