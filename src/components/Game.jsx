@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import { getDatabase, ref, set } from "firebase/database";
 import { firestore } from "../firebase_setup";
 import { useRef } from "react";
-import $ from jQuery;
+
 import {
   addDoc,
   collection,
@@ -25,10 +25,11 @@ function Game() {
   const [c7, setC7] = useState("white");
   const [c8, setC8] = useState("white");
   const [c9, setC9] = useState("white");
-  let interval = null;
+
   const [lvlColour, setlvlColour] = useState("black");
   const [lvlender, setlvlender] = useState("black");
 
+  const [timed, settimed] = useState(false);
   const [correct, setcorrect] = useState("c");
   const [showgame, setshowgame] = useState(false);
   const [showstart, setStart] = useState(true);
@@ -43,7 +44,12 @@ function Game() {
   const [hasUser, setHasUser] = useState(false);
   const [currentUserHighscore, setcurrentUserHighscore] = useState(0);
   const [isLoggedin, setloggedIn] = useState(false);
-  const [LeaderBoard, setLeaderBoard] = useState([]);
+  const [LeaderBoard1, setLeaderBoard1] = useState([]);
+  const [LeaderBoard2, setLeaderBoard2] = useState([]);
+  const [LeaderBoard3, setLeaderBoard3] = useState([]);
+  const [timedBoard1, settimedBoard1] = useState([]);
+  const [timedBoard2, settimedBoard2] = useState([]);
+  const [timedBoard3, settimedBoard3] = useState([]);
   const [leaderboardPage, setLeaderboardPage] = useState(false);
   const [toggleLeaderboard, setToggleLeaderboard] = useState(false);
   // const [cdown, setcdown] = useState(10);
@@ -72,6 +78,7 @@ function Game() {
 
   useEffect(() => {
     fetchLeaderBoard();
+    fetchtimedBoard();
   }, []);
 
   async function fetchLeaderBoard() {
@@ -85,7 +92,40 @@ function Game() {
     array.sort((a, b) => {
       return b.highscore - a.highscore;
     });
-    setLeaderBoard(array);
+    const size1 = Math.min(array.length, 20);
+    const size2 = Math.min(array.length - size1, 20);
+    const size3 = Math.max(array.length - size1 - size2, 10);
+
+    const firstChunk = array.slice(0, size1);
+    const secondChunk = array.slice(size1, size1 + size2);
+    const lastChunk = array.slice(size1 + size2, size1 + size2 + size3);
+    setLeaderBoard1(firstChunk);
+    setLeaderBoard2(secondChunk);
+    setLeaderBoard3(lastChunk);
+  }
+
+  async function fetchtimedBoard() {
+    const colRef = collection(firestore, "timed");
+    const docsSnap = await getDocs(colRef);
+
+    const array = [];
+    docsSnap.forEach((doc) => {
+      array.push(doc.data());
+    });
+    array.sort((a, b) => {
+      return b.score - a.score;
+    });
+
+    const size1 = Math.min(array.length, 20);
+    const size2 = Math.min(array.length - size1, 20);
+    const size3 = Math.max(array.length - size1 - size2, 10);
+
+    const firstChunk = array.slice(0, size1);
+    const secondChunk = array.slice(size1, size1 + size2);
+    const lastChunk = array.slice(size1 + size2, size1 + size2 + size3);
+    settimedBoard1(firstChunk);
+    settimedBoard2(secondChunk);
+    settimedBoard3(lastChunk);
   }
 
   function Register() {
@@ -203,6 +243,7 @@ function Game() {
     setlevel(0);
     fetchLeaderBoard();
     setLeaderboardPage(false);
+    stopCounter();
   }
 
   function Logout() {
@@ -237,6 +278,16 @@ function Game() {
 
   function setLeaderBoardTimed() {
     setToggleLeaderboard(true);
+  }
+
+  function timedgame() {
+    settimed(true);
+    setBg();
+  }
+
+  function normalgame() {
+    settimed(false);
+    setBg();
   }
 
   function setBg() {
@@ -448,34 +499,39 @@ function Game() {
     }
     // StartTimer(10);
   }
-  function timer() {
-    var timer = 60 * 5,
-      minutes,
-      seconds;
-
-    interval = setInterval(() => {
-      minutes = parseInt(timer / 60, 10);
-      seconds = parseInt(timer % 60, 10);
-
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-
-      $("#countdown").text(
-        "Tiempo restante para actualización de datos " + minutes + ":" + seconds
-      );
-
-      if (--timer < 0) {
-        timer = duration;
+  const [refreshId, setRefreshId] = useState();
+  function StartTimer() {
+    let seconds = 10;
+    const myInterval = setInterval(function () {
+      seconds--;
+      document.getElementById("countdown").innerText = seconds;
+      if (seconds < 0) {
+        clearInterval(myInterval);
+        // Call your function when seconds hits 0
+        GameOver();
       }
-
-      if (interval !== null) clearInterval(interval);
     }, 1000);
+
+    setRefreshId(myInterval);
   }
+
+  const stopCounter = () => {
+    clearInterval(refreshId);
+  };
+  let started = false;
+  let timeoutId;
+  let counterValue = 0;
+
   const CheckA = (e) => {
     const c = e.target.getAttribute("id");
 
     if (c == correct) {
       setBg();
+      if (timed) {
+        StartTimer();
+        stopCounter();
+      }
+
       setlevel(level + 1);
     } else {
       GameOver();
@@ -701,6 +757,14 @@ function Game() {
           ></div>
           <div className="bg-gamebrush w-screen h-500 z-neg1 absolute"></div>
           <div className="w-screen h-3/5 flex flex-col justify-center items-center">
+            {timed && (
+              <div className="flex absolute top-1/4 left-1/4 items-center">
+                <div className="bg-clock bg-cover w-14 h-14  pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"></div>
+                <p className="spacemono text-6xl ml-3" id="countdown">
+                  5
+                </p>
+              </div>
+            )}
             <table className="">
               <tr>
                 <td
@@ -808,8 +872,11 @@ function Game() {
                 </div>
 
                 <div className="flex">
-                  <div className="mt-14 mr-20 timedanimation flex flex-col pr-16  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300">
-                    <p className="text-6xl downhere text-timed">
+                  <div
+                    className="mt-14 mr-20 timedanimation flex flex-col pr-16 transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
+                    onClick={timedgame}
+                  >
+                    <p className="text-6xl downhere text-timed transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300">
                       Timed Challenge
                     </p>
                     <p className="text-1xl downhere-small text-white time-header ml-3 absolute top-14">
@@ -820,7 +887,7 @@ function Game() {
                     className="mt-14 ldbdanimation flex flex-col text-right  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300 pointer hover:-translate-y-1 hover:scale-110  duration-300"
                     onClick={showLeaderboard}
                   >
-                    <p className="text-6xl downhere text-ldbd leaderboard-butt">
+                    <p className="text-6xl downhere text-ldbd leaderboard-butt transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300">
                       LeaderBoards
                     </p>
                     <p className="text-1xl downhere-small text-white leaderboard-head absolute top-14 -right-2">
@@ -966,43 +1033,157 @@ function Game() {
                 </h4>
               </div>
             </div>
-            <div className="leaderboard-body downhere">
-              <div className="leaderboard-column">
-                <table className="leaderboard-table">
-                  <tr>
-                    <td className="leaderboard-data">Rank</td>
-                    <h3>|</h3>
-                    <td className="leaderboard-data">Name</td>
-                    <h3>|</h3>
-                    <td className="leaderboard-data">Score</td>
-                  </tr>
-                </table>
-              </div>
 
-              <div className="leaderboard-column">
-                <table className="leaderboard-table">
-                  <tr>
-                    <td className="leaderboard-data">Rank</td>
-                    <h3>|</h3>
-                    <td className="leaderboard-data">Name</td>
-                    <h3>|</h3>
-                    <td className="leaderboard-data">Score</td>
-                  </tr>
-                </table>
-              </div>
+            {!toggleLeaderboard && (
+              <div className="leaderboard-body downhere">
+                <div className="leaderboard-column">
+                  <table className="leaderboard-table">
+                    <tr>
+                      <td className="leaderboard-data underline">Rank</td>
+                      <h3>|</h3>
+                      <td className="leaderboard-data text-center underline">
+                        Name
+                      </td>
+                      <h3>|</h3>
+                      <td className="leaderboard-data underline">Score</td>
+                    </tr>
 
-              <div className="leaderboard-column">
-                <table className="leaderboard-table">
-                  <tr>
-                    <td className="leaderboard-data">Rank</td>
-                    <h3>|</h3>
-                    <td className="leaderboard-data">Name</td>
-                    <h3>|</h3>
-                    <td className="leaderboard-data">Score</td>
-                  </tr>
-                </table>
+                    {LeaderBoard1.map((plyr, index) => {
+                      return (
+                        <tr>
+                          <td className="leaderboard-data">#{index + 1}</td>
+                          <h3></h3>
+                          <td className="leaderboard-data">{plyr.username}</td>
+                          <h3></h3>
+                          <td className="leaderboard-data">{plyr.highscore}</td>
+                        </tr>
+                      );
+                    })}
+                  </table>
+                </div>
+
+                <div className="leaderboard-column">
+                  <table className="leaderboard-table">
+                    <tr>
+                      <td className="leaderboard-data">Rank</td>
+                      <h3>|</h3>
+                      <td className="leaderboard-data">Name</td>
+                      <h3>|</h3>
+                      <td className="leaderboard-data">Score</td>
+                    </tr>
+                    {LeaderBoard2.map((plyr, index) => {
+                      return (
+                        <tr>
+                          <td className="leaderboard-data">#{index + 1}</td>
+                          <h3></h3>
+                          <td className="leaderboard-data">{plyr.username}</td>
+                          <h3></h3>
+                          <td className="leaderboard-data">{plyr.highscore}</td>
+                        </tr>
+                      );
+                    })}
+                  </table>
+                </div>
+
+                <div className="leaderboard-column">
+                  <table className="leaderboard-table">
+                    <tr>
+                      <td className="leaderboard-data">Rank</td>
+                      <h3>|</h3>
+                      <td className="leaderboard-data">Name</td>
+                      <h3>|</h3>
+                      <td className="leaderboard-data">Score</td>
+                    </tr>
+                    {LeaderBoard3.map((plyr, index) => {
+                      return (
+                        <tr>
+                          <td className="leaderboard-data">#{index + 1}</td>
+                          <h3></h3>
+                          <td className="leaderboard-data">{plyr.username}</td>
+                          <h3></h3>
+                          <td className="leaderboard-data">{plyr.highscore}</td>
+                        </tr>
+                      );
+                    })}
+                  </table>
+                </div>
               </div>
-            </div>
+            )}
+            {toggleLeaderboard && (
+              <div className="leaderboard-body downhere">
+                <div className="leaderboard-column">
+                  <table className="leaderboard-table">
+                    <tr>
+                      <td className="leaderboard-data underline">Rank</td>
+                      <h3>|</h3>
+                      <td className="leaderboard-data text-center underline">
+                        Name
+                      </td>
+                      <h3>|</h3>
+                      <td className="leaderboard-data underline">Score</td>
+                    </tr>
+
+                    {timedBoard1.map((plyr, index) => {
+                      return (
+                        <tr>
+                          <td className="leaderboard-data">#{index + 1}</td>
+                          <h3></h3>
+                          <td className="leaderboard-data">{plyr.username}</td>
+                          <h3></h3>
+                          <td className="leaderboard-data">{plyr.highscore}</td>
+                        </tr>
+                      );
+                    })}
+                  </table>
+                </div>
+
+                <div className="leaderboard-column">
+                  <table className="leaderboard-table">
+                    <tr>
+                      <td className="leaderboard-data">Rank</td>
+                      <h3>|</h3>
+                      <td className="leaderboard-data">Name</td>
+                      <h3>|</h3>
+                      <td className="leaderboard-data">Score</td>
+                    </tr>
+                    {timedBoard2.map((plyr, index) => {
+                      return (
+                        <tr>
+                          <td className="leaderboard-data">#{index + 1}</td>
+                          <h3></h3>
+                          <td className="leaderboard-data">{plyr.username}</td>
+                          <h3></h3>
+                          <td className="leaderboard-data">{plyr.highscore}</td>
+                        </tr>
+                      );
+                    })}
+                  </table>
+                </div>
+
+                <div className="leaderboard-column">
+                  <table className="leaderboard-table">
+                    <tr>
+                      <td className="leaderboard-data">Rank</td>
+                      <h3>|</h3>
+                      <td className="leaderboard-data">Name</td>
+                      <h3>|</h3>
+                      <td className="leaderboard-data">Score</td>
+                    </tr>
+                    {timedBoard3.map((plyr, index) => {
+                      return (
+                        <tr>
+                          <td className="leaderboard-data">#{index + 1}</td>
+                          <h3></h3>
+                          <td className="leaderboard-data">{plyr.username}</td>
+                          <h3></h3>
+                          <td className="leaderboard-data">{plyr.highscore}</td>
+                        </tr>
+                      );
+                    })}
+                  </table>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
