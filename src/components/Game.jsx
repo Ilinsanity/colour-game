@@ -31,7 +31,8 @@ function Game() {
   const [correct, setcorrect] = useState("c");
   const [showgame, setshowgame] = useState(false);
   const [showstart, setStart] = useState(true);
-  const [endgame, setend] = useState(false);
+  const [endgame1, setend1] = useState(false);
+  const [endgame2, setend2] = useState(false);
   const [showlogin, setlogin] = useState(false);
   const [showRegister, setRegister] = useState(false);
   const [currentUsername, setUsername] = useState("");
@@ -160,6 +161,7 @@ function Game() {
     });
     setErrorChange("");
     console.log(currentUsername, level);
+    GameOver2();
   }
   async function getHighscore() {
     const docRef = doc(firestore, "players", currentUsername);
@@ -171,7 +173,7 @@ function Game() {
     setcurrentUserHighscore(highscore);
   }
   function GameOver() {
-    setend(true);
+    setend1(true);
     // setshowgame(false);
     // getHighscore();
     // const docRef = doc(firestore, "players", currentUsername);
@@ -185,12 +187,16 @@ function Game() {
 
     // setStart(false);
   }
+  function GameOver2() {
+    setend1(false);
+    setend2(true);
+  }
 
   function BackToStart() {
     setStart(true);
     setlogin(false);
     setshowgame(false);
-    setend(false);
+    setend2(false);
     setlevel(0);
     fetchLeaderBoard();
   }
@@ -211,7 +217,7 @@ function Game() {
 
   function restartGame() {
     setlevel(0);
-    setend(false);
+    setend2(false);
     setBg();
   }
   function setBg() {
@@ -456,7 +462,7 @@ function Game() {
   // }
   return (
     <div className="gamecont">
-      {endgame && (
+      {endgame1 && (
         <div className="Gameovercont z-20 absolute flex justify-center items-center">
           <div className="bg-gameoverbrush gameover-brush absolute flex"></div>
           {showgame && <div></div>}
@@ -597,7 +603,10 @@ function Game() {
                 onClick={CheckRegister}
               ></input>
 
-              <p className="downhere underline text-white skip hover:scale-110">
+              <p
+                className="downhere underline text-white skip hover:scale-110"
+                onClick={GameOver2}
+              >
                 Skip
               </p>
             </div>
@@ -611,6 +620,32 @@ function Game() {
           </div>
         </div>
       )}
+
+      {endgame2 && (
+        <div className="Gameovercont z-20 absolute flex justify-center items-center">
+          <div className="bg-gameoverbrush gameover-brush absolute flex"></div>
+
+          <div className="w-3/4 h-max p-24 pt-32 rounded relative">
+            <p
+              className="GameOverTitle text-white lineh-07 flex justify-center items-center"
+              onClick={restartGame}
+            >
+              <span className="arrowspan flex justify-center items-center">
+                >
+              </span>
+              Play Again?
+            </p>
+
+            {/* <button className="Restartbutton" onClick={restartGame}>
+              Try Again
+            </button>
+            <button className="Restartbutton" onClick={BackToStart}>
+              Back to Main Screen
+            </button> */}
+          </div>
+        </div>
+      )}
+
       {showgame && (
         <div className="w-screen h-screen flex flex-col justify-center items-center z-10 absolute">
           <div

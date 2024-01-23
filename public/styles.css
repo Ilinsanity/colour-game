@@ -50,7 +50,7 @@ body {
 }
 
 .rotate-24 {
-  transform: rotate(-2.462deg); 
+  transform: rotate(-2.462deg);
 }
 
 .sister {
@@ -60,7 +60,6 @@ body {
   letter-spacing: -4.112px;
   line-height: 124.529%;
 }
-
 
 .downhere {
   font-family: "Just Me Again Down Here", cursive;
@@ -177,10 +176,9 @@ body {
   height: 3px;
 }
 
-
 .name-input {
-  border-bottom: 1px dashed #85CCFF;
-  height:45px;
+  border-bottom: 1px dashed #85ccff;
+  height: 45px;
   width: 260px;
   text-align: left;
 }
@@ -205,6 +203,13 @@ input:focus {
 .lineh-06 {
   font-size: 8rem;
   line-height: 0.7;
+}
+.lineh-07 {
+  font-size: 8rem;
+}
+
+.arrowspan {
+  font-size: 17rem;
 }
 
 @keyframes fadeIn {
@@ -552,7 +557,7 @@ background: linear-gradient(
 }
 
 .logo-grey {
-  color: #DADADA;
+  color: #dadada;
 }
 
 .bottom-100 {
@@ -670,7 +675,7 @@ table {
 }
 
 .z-neg1 {
-  z-index:-1;
+  z-index: -1;
 }
 .showlevel {
   font-size: 10rem;
@@ -773,13 +778,13 @@ table {
   height: 6vh;
   width: 6vh;
   /* background-color: #555; */
-    cursor: default;
+  cursor: default;
 }
 .endcircle2 {
   height: 6vh;
   width: 6vh;
   background-color: #555;
-    cursor: default;
+  cursor: default;
 }
 
 .endcircle3 {
@@ -793,42 +798,42 @@ table {
   height: 6vh;
   width: 6vh;
   background-color: #555;
-    cursor: default;
+  cursor: default;
 }
 
 .endcircle5 {
   height: 6vh;
   width: 6vh;
   background-color: #555;
-    cursor: default;
+  cursor: default;
 }
 
 .endcircle6 {
   height: 6vh;
   width: 6vh;
   background-color: #555;
-    cursor: default;
+  cursor: default;
 }
 
 .endcircle7 {
   height: 6vh;
   width: 6vh;
   background-color: #555;
-    cursor: default;
+  cursor: default;
 }
 
 .endcircle8 {
   height: 6vh;
   width: 6vh;
   background-color: #555;
-    cursor: default;
+  cursor: default;
 }
 
 .endcircle9 {
   height: 6vh;
   width: 6vh;
   background-color: #555;
-    cursor: default;
+  cursor: default;
 }
 
 .endtab {
