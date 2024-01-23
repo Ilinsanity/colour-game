@@ -14,7 +14,8 @@ module.exports = {
         gamebrush: "url('/src/images/Group 16(1).png')",
         gameoverbrush: "url('/src/images/Group 17(1).png')",
         submitbutton: "url('/src/images/Group 12(1).svg')",
-        namebox: "url('/src/images/Rectangle 14(1).png')"
+        namebox: "url('/src/images/Rectangle 14(1).png')",
+        purplebru: "url('/src/images/purple brush.svg')",
       },
       colors: {
         gold: "#FFD700",

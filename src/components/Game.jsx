@@ -923,13 +923,14 @@ function Game() {
 						className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 pointer hover:scale-105"
 						onClick={BackToStart}
 					></div>
-					<div className="leaderboard-container mt-30">
+          <div className="bg-purplebru w-full h-full absolute bg-cover"></div>
+					<div className="leaderboard-container z-50">
 						<div className="leaderboard-title-container sister-leaderboard ">
 							<h1 className="leaderboard-title">Leaderboards</h1>
 							<div className="leaderboard-section-container ">
-								<h4>Regular</h4>
+								<h4 className={!toggleLeaderboard ? 'selectedLeaderboard pointer' : 'pointer hover:scale-105'} onClick={() => setToggleLeaderboard(false)}>Regular</h4>
 								<div>|</div>
-								<h4>Timed</h4>
+								<h4 className={toggleLeaderboard ? 'selectedLeaderboard pointer' : 'pointer hover:scale-105'} onClick={() => setToggleLeaderboard(true)}>Timed</h4>
 							</div>
 						</div>
 						<div className="leaderboard-body downhere">

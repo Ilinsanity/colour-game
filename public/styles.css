@@ -56,7 +56,7 @@ body {
 .leaderboard-section-container {
   display: flex;
   font-size: 25px;
-  gap: 8px;
+  gap: 12px;
 }
 
 .leaderboard-body {
@@ -91,6 +91,10 @@ body {
   font-family: "Love Ya Like A Sister", cursive;
   font-weight: 400;
   font-style: normal;
+}
+
+.selectedLeaderboard {
+  color: #4B6CB7;
 }
 
 .downhere {
