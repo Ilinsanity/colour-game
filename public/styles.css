@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Just+Another+Hand&family=Just+Me+Again+Down+Here&family=Love+Ya+Like+A+Sister&family=Nanum+Pen+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -39,6 +40,12 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.spacemono {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .start-game {
@@ -94,7 +101,7 @@ body {
 }
 
 .selectedLeaderboard {
-  color: #4B6CB7;
+  color: #4b6cb7;
 }
 
 .downhere {
