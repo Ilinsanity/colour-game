@@ -53,6 +53,32 @@ body {
   transform: rotate(-2.462deg);
 }
 
+.leaderboard-section-container {
+  display: flex;
+  font-size: 25px;
+  gap: 8px;
+}
+
+.leaderboard-body {
+  display: flex;
+  font-size: 30px;
+  gap: 20px;
+}
+
+.leaderboard-title {
+  font-size: 90px;
+  line-height: 80%;
+}
+
+.leaderboard-title-container {
+  padding-left: 10px;
+}
+
+.leaderboard-container {
+  margin-top: 170px;
+  margin-left: 5rem;
+}
+
 .sister {
   font-family: "Love Ya Like A Sister", cursive;
   font-weight: 400;
@@ -61,12 +87,22 @@ body {
   line-height: 124.529%;
 }
 
+.sister-leaderboard {
+  font-family: "Love Ya Like A Sister", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .downhere {
   font-family: "Just Me Again Down Here", cursive;
   font-weight: 400;
   font-style: normal;
   /* letter-spacing: -3.192px;
   line-height: 149.821%; */
+}
+
+.leaderboard-table {
+  border-spacing: 12px;
 }
 
 .downhere-small {
@@ -838,4 +874,9 @@ table {
 
 .endtab {
   border-spacing: 8px;
+}
+
+.leaderboard-data {
+  border: none;
+  cursor: default;
 }
