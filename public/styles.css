@@ -198,10 +198,27 @@ body {
   }
 }
 .meshstyle {
-  width: 47rem;
-  height: 40rem;
+  width: 27rem;
+  height: 20rem;
   opacity: 0;
   animation: fadeIn 1.5s ease-out forwards;
+}
+
+@media (min-width: 640px) {
+  .meshstyle {
+    width: 47rem;
+    height: 40rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+  }
+
+  .skip {
+    font-size: 1.2rem;
+    line-height: 0.4;
+    cursor: pointer;
+    height: 30px;
+    width: 100%;
+  }
 }
 
 .submit-button {
@@ -211,7 +228,7 @@ body {
 }
 
 .skip {
-  font-size: 1.2rem;
+  font-size: 2rem;
   line-height: 0.4;
   cursor: pointer;
   height: 30px;
@@ -266,7 +283,6 @@ input:focus {
 }
 
 .custom-home-margin {
-  margin-top: -10.5rem;
 }
 
 @keyframes fadeIn {
@@ -281,8 +297,16 @@ input:focus {
   }
 }
 
+@media (min-width: 640px) {
+  .custom-home-margin {
+    margin-top: -10.5rem;
+  }
+  .mr-custom2 {
+    margin-right: 880px;
+  }
+}
+
 .mr-custom2 {
-  margin-right: 880px;
 }
 
 .left-4p {
@@ -711,9 +735,18 @@ td {
 }
 
 .gameover-brush {
-  width: 1241px;
-  height: 598px;
+  width: 90%;
+  height: 70%;
+  background-position: center;
   z-index: -1;
+}
+
+@media (min-width: 640px) {
+  .gameover-brush {
+    width: 1241px;
+    height: 598px;
+    z-index: -1;
+  }
 }
 
 table,
@@ -763,7 +796,7 @@ table {
   backdrop-filter: blur(10px);
 }
 .GameOverTitle {
-  font-size: 8rem;
+  /* font-size: 8rem; */
   font-family: "Love Ya Like A Sister", cursive;
   font-weight: 400;
   font-style: normal;
@@ -910,4 +943,23 @@ table {
   border: none;
   cursor: default;
   animation: fadeInLeft 1s ease-in-out forwards;
+}
+
+@media (max-width: 480px) {
+  .gameover-brush {
+    width: 0%;
+  }
+
+  .mobilegameovercont {
+    width: 100%;
+  }
+
+  .GameOverTitle {
+    font-size: 14rem;
+    font-family: "Love Ya Like A Sister", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: black;
+    letter-spacing: -14.033px;
+  }
 }

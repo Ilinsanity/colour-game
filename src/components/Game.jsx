@@ -304,45 +304,45 @@ function Game() {
     var num = Math.random() <= 0.5 ? 1 : 2;
     if (level <= 5) {
       if (num == 1) {
-        shade = 80;
-      } else {
-        shade = -80;
-      }
-    } else if (level > 5 && level <= 10) {
-      if (num == 1) {
-        shade = 70;
-      } else {
-        shade = -70;
-      }
-    } else if (level > 10 && level <= 15) {
-      if (num == 1) {
-        shade = 60;
-      } else {
-        shade = -60;
-      }
-    } else if (level > 10 && level <= 15) {
-      if (num == 1) {
         shade = 50;
       } else {
         shade = -50;
       }
-    } else if (level > 15 && level <= 20) {
+    } else if (level > 5 && level <= 10) {
+      if (num == 1) {
+        shade = 45;
+      } else {
+        shade = -45;
+      }
+    } else if (level > 10 && level <= 15) {
       if (num == 1) {
         shade = 40;
       } else {
         shade = -40;
       }
-    } else if (level > 20 && level <= 25) {
+    } else if (level > 10 && level <= 15) {
+      if (num == 1) {
+        shade = 35;
+      } else {
+        shade = -35;
+      }
+    } else if (level > 15 && level <= 20) {
       if (num == 1) {
         shade = 30;
       } else {
         shade = -30;
       }
+    } else if (level > 20 && level <= 25) {
+      if (num == 1) {
+        shade = 25;
+      } else {
+        shade = -25;
+      }
     } else if (level > 25 && level <= 30) {
       if (num == 1) {
-        shade = 20;
+        shade = 15;
       } else {
-        shade = -20;
+        shade = -15;
       }
     } else if (level > 30 && level <= 35) {
       if (num == 1) {
@@ -361,6 +361,30 @@ function Game() {
         shade = 4;
       } else {
         shade = -4;
+      }
+    } else if (level > 45 && level <= 50) {
+      if (num == 1) {
+        shade = 3;
+      } else {
+        shade = -3;
+      }
+    } else if (level > 50 && level <= 55) {
+      if (num == 1) {
+        shade = 2;
+      } else {
+        shade = -2;
+      }
+    } else if (level > 55 && level <= 60) {
+      if (num == 1) {
+        shade = 1;
+      } else {
+        shade = -1;
+      }
+    } else if (level > 60) {
+      if (num == 1) {
+        shade = 0.5;
+      } else {
+        shade = -0.5;
       }
     }
 
@@ -561,12 +585,16 @@ function Game() {
     <div className="gamecont">
       {endgame1 && (
         <div className="Gameovercont z-20 absolute flex justify-center items-center">
-          <div className="bg-gameoverbrush gameover-brush absolute flex"></div>
-          {showgame && <div></div>}
-          <div className="w-3/4 h-max p-24 pt-32 rounded relative">
-            <p className="GameOverTitle text-white lineh-06">Game Over!</p>
+          <div className="bg-gameoverbrush gameover-brush absolute flex h-full sm:h-3/4 bg-cover"></div>
 
-            <p className="downhere text-4xl text-score">Score: {level}</p>
+          <div className="w-full sm:w-3/4 h-max p-24 pt-32 rounded relative mobilegameovercont">
+            <p className="GameOverTitle text-white text-[6rem] sm:text-[8rem]">
+              Game Over!
+            </p>
+
+            <p className="downhere text-5xl sm:text-4xl text-score">
+              Score: {level}
+            </p>
 
             <div className="results">
               <table className="endtab">
@@ -720,12 +748,12 @@ function Game() {
 
       {endgame2 && (
         <div className="Gameovercont z-20 absolute flex justify-center items-center">
-          <div className="bg-gameoverbrush gameover-brush absolute flex"></div>
+          <div className="bg-gameoverbrush gameover-brush absolute flex h-full sm:h-3/4 bg-cover"></div>
 
           <div className="w-3/4 h-max p-24 pt-32 rounded relative flex justify-center ">
-            <div className="w-14 h-14 absolute top-12rem mr-custom2 custom-home-margin pointer">
+            <div className="sm:w-14 sm:h-14 sm:absolute sm:top-12rem mr-custom2 custom-home-margin pointer">
               <div
-                className="bg-home2 bg-cover w-14 h-14  pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
+                className="bg-home2 bg-cover w-14 h-14 pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
                 onClick={BackToStart}
               ></div>
             </div>
@@ -758,7 +786,7 @@ function Game() {
           <div className="bg-gamebrush w-screen h-500 z-neg1 absolute"></div>
           <div className="w-screen h-3/5 flex flex-col justify-center items-center">
             {timed && (
-              <div className="flex absolute top-1/4 left-1/4 items-center">
+              <div className="flex sm:absolute sm:top-1/4 sm:left-1/4 items-center bg-gray-400 p-4 rounded-lg">
                 <div className="bg-clock bg-cover w-14 h-14  pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"></div>
                 <p className="spacemono text-6xl ml-3" id="countdown">
                   10
@@ -840,9 +868,11 @@ function Game() {
               </h1>
               <div className="h-6 w-52 bg-linescore bg-cover "></div>
             </div>
-            <div className="absolute left-20 w-56 rotate-24 bottom-56 flex flex-col">
-              <p className="jah text-2xl text-white">How To Play</p>
-              <p className="jah text-1xl text-white">
+            <div className="absolute sm:left-20 sm:w-56 sm:rotate-24 sm:bottom-56 bottom-0 flex flex-col">
+              <p className="jah text-2xl text-black sm:text-white">
+                How To Play
+              </p>
+              <p className="jah text-1xl text-black sm:text-white">
                 Pick the colour that doesn’t match the rest!!!! Tip: Turn your
                 brightness up ;){" "}
               </p>
@@ -853,7 +883,7 @@ function Game() {
 
       {showstart && (
         <div className="">
-          <div className="w-screen h-80 flex  bg-no-repeat bg-cover bg-bottom fixed z-30 -bottom-6 justify-center svg-cont ">
+          <div className="w-screen h-1/2 sm:h-80 flex  bg-no-repeat bg-cover bg-bottom fixed z-30 -bottom-6 justify-center svg-cont ">
             <div className=" flex flex-col items-center justify-center ">
               <div className=" flex flex-col items-center justify-center">
                 <div
@@ -862,10 +892,10 @@ function Game() {
                 >
                   <div className="bg-arrow bg-contain bg-no-repeat h-38 w-48 mr-4 mt-4 inline-block rot pointer"></div>
                   <div className="flex flex-col text-center startanimation pointer">
-                    <p className="text-8xl sister text-sg start-game">
+                    <p className="text-6xl sm:text-8xl sister text-sg start-game">
                       Start Game!
                     </p>
-                    <p className="text-4xl downhere-small text-white absolute top-20 left-24 rotate-18">
+                    <p className="text-4xl downhere-small text-white sm:absolute sm:top-20 sm:left-24 rotate-18">
                       play with unlimited time
                     </p>
                   </div>
@@ -876,10 +906,10 @@ function Game() {
                     className="mt-14 mr-20 timedanimation flex flex-col pr-16 transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
                     onClick={timedgame}
                   >
-                    <p className="text-6xl downhere text-timed transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300">
+                    <p className="text-6xl ml-3 sm:ml-0 downhere text-timed transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300">
                       Timed Challenge
                     </p>
-                    <p className="text-1xl downhere-small text-white time-header ml-3 absolute top-14">
+                    <p className="text-2xl text-right sm:text-1xl downhere-small text-white time-header ml-3 sm:absolute sm:top-14">
                       Ready to test your skills?
                     </p>
                   </div>
@@ -887,10 +917,10 @@ function Game() {
                     className="mt-14 ldbdanimation flex flex-col text-right  transition ease-in-out  hover:-translate-y-1 hover:scale-110  duration-300 pointer hover:-translate-y-1 hover:scale-110  duration-300"
                     onClick={showLeaderboard}
                   >
-                    <p className="text-6xl downhere text-ldbd leaderboard-butt transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300">
+                    <p className="text-6xl mr-3 downhere text-ldbd leaderboard-butt transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300">
                       LeaderBoards
                     </p>
-                    <p className="text-1xl downhere-small text-white leaderboard-head absolute top-14 -right-2">
+                    <p className="text-2xl text-left downhere-small text-white leaderboard-head sm:absolute sm:top-14 sm:-right-2">
                       Check out the top scores!
                     </p>
                   </div>
@@ -899,7 +929,7 @@ function Game() {
             </div>
           </div>
           <div className="w-screen h-screen flex justify-start items-start z-20 relative ">
-            <div className="flex absolute top-44 left-56">
+            <div className="flex mt-12 sm:absolute sm:top-44 sm:left-56 z-20">
               <div className="flex flex-col relative">
                 <p className="jah1 text-black p-0 color-title">
                   <span className="text-c1 colanim">C</span>
@@ -920,7 +950,7 @@ function Game() {
                 </p>
               </div>
             </div>
-            <div className="meshstyle bg-mesh bg-no-repeat bg-contain bg-center absolute  right-40 top-0 mr-12"></div>
+            <div className="meshstyle bg-mesh bg-no-repeat bg-contain bg-center z-10 absolute right-0 sm:right-40 sm:top-0 sm:mr-12"></div>
             <div className="w-screen h-screen flex items-center justify-end bg-bluepaint bg-no-repeat bg-contain bg-bottom absolute z-30 bot-0 "></div>
           </div>
           {/* landgrad*/}
