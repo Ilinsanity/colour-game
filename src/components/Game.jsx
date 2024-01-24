@@ -904,7 +904,7 @@ function Game() {
               <div className=" flex flex-col items-center justify-center">
                 <div
                   className="flex mr-40 transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300 absolute top-4"
-                  onClick={setBg}
+                  onClick={normalgame}
                 >
                   <div className="bg-arrow bg-contain bg-no-repeat h-38 w-48 mr-4 mt-4 inline-block rot pointer"></div>
                   <div className="flex flex-col text-center startanimation pointer">
