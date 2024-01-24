@@ -78,7 +78,6 @@ body {
 }
 
 .leaderboard-title-container {
-  padding-left: 10px;
 }
 
 .leaderboard-container {
@@ -104,6 +103,14 @@ body {
   color: #4b6cb7;
 }
 
+.mobile-gameover {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: #395698;
+  display: none;
+}
+
 .downhere {
   font-family: "Just Me Again Down Here", cursive;
   font-weight: 400;
@@ -114,6 +121,54 @@ body {
 
 .leaderboard-table {
   border-spacing: 0px;
+}
+
+@media only screen and (max-width: 640px) {
+  .gamebrush {
+    display: none;
+  }
+
+  .mobile-gameover {
+    display: block;
+  }
+
+  .mobile-top {
+    margin-top: 50px;
+  }
+
+  .play-again {
+    font-size: 75px;
+    line-height: 63%;
+    letter-spacing: -2px;
+  }
+
+  .mobile-header {
+    display: none;
+  }
+
+  .start-mobile {
+    width: 100vw;
+    height: 50vh;
+    position: absolute;
+    bottom: 0;
+    background-color: black;
+  }
+  .mobile-column {
+    flex-direction: column;
+  }
+}
+
+.clock-di {
+  width: 66px;
+  height: 70px;
+}
+
+.color-beige {
+  background-color: #939393;
+}
+
+.color-white {
+  color: white;
 }
 
 .downhere-small {
@@ -213,7 +268,7 @@ body {
   }
 
   .skip {
-    font-size: 1.2rem;
+    font-size: 6rem;
     line-height: 0.4;
     cursor: pointer;
     height: 30px;
@@ -228,7 +283,7 @@ body {
 }
 
 .skip {
-  font-size: 2rem;
+  font-size: 1rem;
   line-height: 0.4;
   cursor: pointer;
   height: 30px;
@@ -943,6 +998,7 @@ table {
   border: none;
   cursor: default;
   animation: fadeInLeft 1s ease-in-out forwards;
+  line-height: 115%;
 }
 
 @media (max-width: 480px) {

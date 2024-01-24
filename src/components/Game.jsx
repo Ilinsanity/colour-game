@@ -586,6 +586,7 @@ function Game() {
       {endgame1 && (
         <div className="Gameovercont z-20 absolute flex justify-center items-center">
           <div className="bg-gameoverbrush gameover-brush absolute flex"></div>
+          <div className="mobile-gameover"></div>
           <div className="w-full sm:w-3/4 h-max p-24 pt-32 rounded relative mobilegameovercont">
             <p className="GameOverTitle text-white lineh-06 text-[6rem] sm:text-[8rem]">
               Game Over!
@@ -747,7 +748,8 @@ function Game() {
 
       {endgame2 && (
         <div className="Gameovercont z-20 absolute flex justify-center items-center">
-          <div className="bg-gameoverbrush gameover-brush absolute flex h-full sm:h-3/4 bg-cover"></div>
+          <div className="bg-gameoverbrush gameover-brush absolute flex"></div>
+          <div className="mobile-gameover"></div>
 
           <div className="w-3/4 h-max p-24 pt-32 rounded relative flex justify-center ">
             <div className="sm:w-14 sm:h-14 sm:absolute sm:top-12rem mr-custom2 custom-home-margin pointer">
@@ -782,12 +784,12 @@ function Game() {
             className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
             onClick={BackToStart}
           ></div>
-          <div className="bg-gamebrush w-screen h-500 z-neg1 absolute"></div>
+          <div className="bg-gamebrush w-screen h-500 z-neg1 absolute max-sm gamebrush"></div>
           <div className="w-screen h-3/5 flex flex-col justify-center items-center">
             {timed && (
-              <div className="flex sm:absolute sm:top-1/4 sm:left-1/4 items-center bg-gray-400 p-4 rounded-lg">
-                <div className="bg-clock bg-cover w-14 h-14  pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"></div>
-                <p className="spacemono text-6xl ml-3" id="countdown">
+              <div className="flex sm:absolute sm:top-1/4 sm:left-1/4 items-center color-beige p-4 rounded-lg">
+                <div className="bg-clock clock-di"></div>
+                <p className="downhere text-7xl ml-3 color-white" id="countdown">
                   10
                 </p>
               </div>
@@ -882,7 +884,9 @@ function Game() {
 
       {showstart && (
         <div className="">
+          <div className="start-mobile absolute z-20"></div>
           <div className="w-screen h-1/2 sm:h-80 flex  bg-no-repeat bg-cover bg-bottom fixed z-30 -bottom-6 justify-center svg-cont ">
+
             <div className=" flex flex-col items-center justify-center ">
               <div className=" flex flex-col items-center justify-center">
                 <div
@@ -894,21 +898,21 @@ function Game() {
                     <p className="text-6xl sm:text-8xl sister text-sg start-game">
                       Start Game!
                     </p>
-                    <p className="text-4xl downhere-small text-white sm:absolute sm:top-20 sm:left-24 rotate-18">
+                    <p className="text-4xl downhere-small text-white sm:absolute sm:top-20 sm:left-24 rotate-18 mobile-header">
                       play with unlimited time
                     </p>
                   </div>
                 </div>
 
-                <div className="flex">
+                <div className="flex  mobile-column">
                   <div
                     className="mt-14 mr-20 timedanimation flex flex-col pr-16 transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300"
                     onClick={timedgame}
                   >
-                    <p className="text-6xl ml-3 sm:ml-0 downhere text-timed transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300">
+                    <p className="pointer text-6xl ml-3 sm:ml-0 downhere text-timed transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300 ">
                       Timed Challenge
                     </p>
-                    <p className="text-2xl text-right sm:text-1xl downhere-small text-white time-header ml-3 sm:absolute sm:top-14">
+                    <p className="text-2xl text-right sm:text-1xl downhere-small text-white time-header ml-3 sm:absolute sm:top-14 mobile-header">
                       Ready to test your skills?
                     </p>
                   </div>
@@ -919,7 +923,7 @@ function Game() {
                     <p className="text-6xl mr-3 downhere text-ldbd leaderboard-butt transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300">
                       LeaderBoards
                     </p>
-                    <p className="text-2xl text-left downhere-small text-white leaderboard-head sm:absolute sm:top-14 sm:-right-2">
+                    <p className="text-2xl text-left downhere-small text-white leaderboard-head sm:absolute sm:top-14 sm:-right-2 mobile-header">
                       Check out the top scores!
                     </p>
                   </div>
@@ -928,7 +932,7 @@ function Game() {
             </div>
           </div>
           <div className="w-screen h-screen flex justify-start items-start z-20 relative ">
-            <div className="flex mt-12 sm:absolute sm:top-44 sm:left-56 z-20">
+            <div className="flex mt-12 sm:absolute sm:top-44 sm:left-56 z-20 mobile-top">
               <div className="flex flex-col relative">
                 <p className="jah1 text-black p-0 color-title">
                   <span className="text-c1 colanim">C</span>
@@ -1069,11 +1073,11 @@ function Game() {
                   <table className="leaderboard-table">
                     <tr>
                       <td className="leaderboard-data underline">Rank</td>
-                      <h3>|</h3>
+                      <h3></h3>
                       <td className="leaderboard-data text-center underline">
                         Name
                       </td>
-                      <h3>|</h3>
+                      <h3></h3>
                       <td className="leaderboard-data underline">Score</td>
                     </tr>
 
@@ -1094,11 +1098,11 @@ function Game() {
                 <div className="leaderboard-column">
                   <table className="leaderboard-table">
                     <tr>
-                      <td className="leaderboard-data">Rank</td>
-                      <h3>|</h3>
-                      <td className="leaderboard-data">Name</td>
-                      <h3>|</h3>
-                      <td className="leaderboard-data">Score</td>
+                      <td className="leaderboard-data underline">Rank</td>
+                      <h3></h3>
+                      <td className="leaderboard-data underline">Name</td>
+                      <h3></h3>
+                      <td className="leaderboard-data underline">Score</td>
                     </tr>
                     {LeaderBoard2.map((plyr, index) => {
                       return (
@@ -1117,11 +1121,11 @@ function Game() {
                 <div className="leaderboard-column">
                   <table className="leaderboard-table">
                     <tr>
-                      <td className="leaderboard-data">Rank</td>
-                      <h3>|</h3>
-                      <td className="leaderboard-data">Name</td>
-                      <h3>|</h3>
-                      <td className="leaderboard-data">Score</td>
+                      <td className="leaderboard-data underline">Rank</td>
+                      <h3></h3>
+                      <td className="leaderboard-data underline">Name</td>
+                      <h3></h3>
+                      <td className="leaderboard-data underline">Score</td>
                     </tr>
                     {LeaderBoard3.map((plyr, index) => {
                       return (
@@ -1144,11 +1148,11 @@ function Game() {
                   <table className="leaderboard-table">
                     <tr>
                       <td className="leaderboard-data underline">Rank</td>
-                      <h3>|</h3>
+                      <h3></h3>
                       <td className="leaderboard-data text-center underline">
                         Name
                       </td>
-                      <h3>|</h3>
+                      <h3></h3>
                       <td className="leaderboard-data underline">Score</td>
                     </tr>
 
@@ -1170,9 +1174,9 @@ function Game() {
                   <table className="leaderboard-table">
                     <tr>
                       <td className="leaderboard-data">Rank</td>
-                      <h3>|</h3>
+                      <h3></h3>
                       <td className="leaderboard-data">Name</td>
-                      <h3>|</h3>
+                      <h3></h3>
                       <td className="leaderboard-data">Score</td>
                     </tr>
                     {timedBoard2.map((plyr, index) => {
@@ -1193,9 +1197,9 @@ function Game() {
                   <table className="leaderboard-table">
                     <tr>
                       <td className="leaderboard-data">Rank</td>
-                      <h3>|</h3>
+                      <h3></h3>
                       <td className="leaderboard-data">Name</td>
-                      <h3>|</h3>
+                      <h3></h3>
                       <td className="leaderboard-data">Score</td>
                     </tr>
                     {timedBoard3.map((plyr, index) => {

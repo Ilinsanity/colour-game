@@ -17,7 +17,7 @@ module.exports = {
         namebox: "url('/src/images/Rectangle 14(1).png')",
         purplebru: "url('/src/images/purple brush.svg')",
         home2: "url('/src/images/home-sketch 2.png')",
-        clock: "url('/src/images/clock.png')",
+        clock: "url('/src/images/clock.svg')",
       },
       colors: {
         gold: "#FFD700",
