@@ -587,7 +587,7 @@ function Game() {
         <div className="Gameovercont z-20 absolute flex justify-center items-center">
           <div className="bg-gameoverbrush gameover-brush absolute flex"></div>
           <div className="w-full sm:w-3/4 h-max p-24 pt-32 rounded relative mobilegameovercont">
-            <p className="GameOverTitle text-white text-[6rem] sm:text-[8rem]">
+            <p className="GameOverTitle text-white lineh-06 text-[6rem] sm:text-[8rem]">
               Game Over!
             </p>
 
