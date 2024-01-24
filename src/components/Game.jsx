@@ -932,7 +932,7 @@ function Game() {
             </div>
           </div>
           <div className="w-screen h-screen flex justify-start items-start z-20 relative ">
-            <div className="flex mt-12 sm:absolute sm:top-44 sm:left-56 z-20 mobile-top">
+            <div className="flex mt-12 sm:absolute bottom-100 sm:left-56 z-20 mobile-top">
               <div className="flex flex-col relative">
                 <p className="jah1 text-black p-0 color-title">
                   <span className="text-c1 colanim">C</span>
