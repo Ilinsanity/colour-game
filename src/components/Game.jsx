@@ -195,16 +195,25 @@ function Game() {
   async function CheckRegister() {
     const docRef = doc(firestore, "players", currentUsername);
     const docSnap = await getDoc(docRef);
-
-    const dbRef = collection(firestore, "players");
-
-    await setDoc(doc(dbRef, currentUsername), {
-      username: currentUsername,
-      highscore: level,
-    });
-    setErrorChange("");
-    console.log(currentUsername, level);
-    GameOver2();
+    if (timed) {
+      const dbRef = collection(firestore, "timed");
+      await setDoc(doc(dbRef, currentUsername), {
+        username: currentUsername,
+        score: level,
+      });
+      setErrorChange("");
+      console.log(currentUsername, level);
+      GameOver2();
+    } else {
+      const dbRef = collection(firestore, "players");
+      await setDoc(doc(dbRef, currentUsername), {
+        username: currentUsername,
+        highscore: level,
+      });
+      setErrorChange("");
+      console.log(currentUsername, level);
+      GameOver2();
+    }
   }
   async function getHighscore() {
     const docRef = doc(firestore, "players", currentUsername);
@@ -267,6 +276,8 @@ function Game() {
   }
 
   function showLeaderboard() {
+    fetchLeaderBoard();
+    fetchtimedBoard();
     setLeaderboardPage(true);
     setStart(false);
     setlogin(false);
@@ -789,7 +800,10 @@ function Game() {
             {timed && (
               <div className="flex sm:absolute sm:top-1/4 sm:left-1/4 items-center color-beige p-4 rounded-lg">
                 <div className="bg-clock clock-di"></div>
-                <p className="downhere text-7xl ml-3 color-white" id="countdown">
+                <p
+                  className="downhere text-7xl ml-3 color-white"
+                  id="countdown"
+                >
                   10
                 </p>
               </div>
@@ -886,7 +900,6 @@ function Game() {
         <div className="">
           <div className="start-mobile absolute z-20"></div>
           <div className="w-screen h-1/2 sm:h-80 flex  bg-no-repeat bg-cover bg-bottom fixed z-30 -bottom-6 justify-center svg-cont ">
-
             <div className=" flex flex-col items-center justify-center ">
               <div className=" flex flex-col items-center justify-center">
                 <div
@@ -1163,7 +1176,7 @@ function Game() {
                           <h3></h3>
                           <td className="leaderboard-data">{plyr.username}</td>
                           <h3></h3>
-                          <td className="leaderboard-data">{plyr.highscore}</td>
+                          <td className="leaderboard-data">{plyr.score}</td>
                         </tr>
                       );
                     })}
@@ -1186,7 +1199,7 @@ function Game() {
                           <h3></h3>
                           <td className="leaderboard-data">{plyr.username}</td>
                           <h3></h3>
-                          <td className="leaderboard-data">{plyr.highscore}</td>
+                          <td className="leaderboard-data">{plyr.score}</td>
                         </tr>
                       );
                     })}
@@ -1209,7 +1222,7 @@ function Game() {
                           <h3></h3>
                           <td className="leaderboard-data">{plyr.username}</td>
                           <h3></h3>
-                          <td className="leaderboard-data">{plyr.highscore}</td>
+                          <td className="leaderboard-data">{plyr.score}</td>
                         </tr>
                       );
                     })}
