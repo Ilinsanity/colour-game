@@ -257,6 +257,7 @@ function Game() {
     setStart(true);
     setlogin(false);
     setshowgame(false);
+    setend1(false);
     setend2(false);
     setlevel(0);
     fetchLeaderBoard();
@@ -372,39 +373,63 @@ function Game() {
       }
     } else if (level > 35 && level <= 40) {
       if (num == 1) {
+        shade = 9;
+      } else {
+        shade = -9;
+      }
+    } else if (level > 40 && level <= 45) {
+      if (num == 1) {
+        shade = 8;
+      } else {
+        shade = -8;
+      }
+    } else if (level > 45 && level <= 50) {
+      if (num == 1) {
+        shade = 7;
+      } else {
+        shade = -7;
+      }
+    } else if (level > 50 && level <= 55) {
+      if (num == 1) {
+        shade = 6;
+      } else {
+        shade = -6;
+      }
+    } else if (level > 55 && level <= 60) {
+      if (num == 1) {
         shade = 5;
       } else {
         shade = -5;
       }
-    } else if (level > 40 && level <= 45) {
+    } else if (level > 60 && level <= 65) {
       if (num == 1) {
         shade = 4;
       } else {
         shade = -4;
       }
-    } else if (level > 45 && level <= 50) {
+    } else if (level > 65 && level <= 70) {
       if (num == 1) {
         shade = 3;
       } else {
         shade = -3;
       }
-    } else if (level > 50 && level <= 55) {
+    } else if (level > 70 && level <= 75) {
       if (num == 1) {
         shade = 2;
       } else {
         shade = -2;
       }
-    } else if (level > 55 && level <= 60) {
+    } else if (level > 75 && level <= 80) {
       if (num == 1) {
-        shade = 1;
+        shade = 1.9;
       } else {
-        shade = -1;
+        shade = -1.9;
       }
-    } else if (level > 60) {
+    } else if (level > 80) {
       if (num == 1) {
-        shade = 0.5;
+        shade = 1.7;
       } else {
-        shade = -0.5;
+        shade = -1.7;
       }
     }
 
@@ -545,13 +570,15 @@ function Game() {
   }
   const [refreshId, setRefreshId] = useState();
   function StartTimer() {
+    document.getElementById("countdown").innerText = 10;
     let seconds = 10;
     const myInterval = setInterval(function () {
       seconds--;
       document.getElementById("countdown").innerText = seconds;
       if (seconds < 0) {
-        clearInterval(myInterval);
         document.getElementById("countdown").innerText = 10;
+        clearInterval(myInterval);
+
         // Call your function when seconds hits 0
         GameOver();
       }
