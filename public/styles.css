@@ -799,7 +799,7 @@ td {
 @media (min-width: 640px) {
   .gameover-brush {
     width: 1241px;
-    height: 598px;
+    height: 646px;
     z-index: -1;
   }
 }

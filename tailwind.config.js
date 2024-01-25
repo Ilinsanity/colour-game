@@ -12,7 +12,7 @@ module.exports = {
         home: "url('/src/images/home-sketch 1.svg')",
         linescore: "url('/src/images/linescore.svg')",
         gamebrush: "url('/src/images/Group 16(4).png')",
-        gameoverbrush: "url('/src/images/Group 17(1).png')",
+        gameoverbrush: "url('/src/images/Frame 2(1).png')",
         submitbutton: "url('/src/images/Group 12(1).svg')",
         namebox: "url('/src/images/Rectangle 14(1).png')",
         purplebru: "url('/src/images/purple brush.svg')",
