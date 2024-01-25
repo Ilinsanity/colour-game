@@ -1090,7 +1090,7 @@ function Game() {
             className="bg-home bg-cover w-14 h-14 absolute top-10 left-20 pointer transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-300 z-50"
             onClick={BackToStart}
           ></div>
-          <div className="bg-purplebru w-full h-full absolute bg-cover"></div>
+          <div className="bg-purplebru w-full h-full fixed bg-cover"></div>
           <div className="leaderboard-container z-50">
             <div className="leaderboard-title-container sister-leaderboard ">
               <h1 className="leaderboard-title">Leaderboards</h1>
@@ -1189,7 +1189,7 @@ function Game() {
                       return (
                         <tr>
                           <td className="leaderboard-data">
-                            #{index + 1 + 10}
+                            #{index + 1 + 40}
                           </td>
                           <h3></h3>
                           <td className="leaderboard-data pr-2">
@@ -1274,7 +1274,7 @@ function Game() {
                       return (
                         <tr>
                           <td className="leaderboard-data">
-                            #{index + 1 + 10}
+                            #{index + 1 + 40}
                           </td>
                           <h3></h3>
                           <td className="leaderboard-data pr-2">
