@@ -16,6 +16,7 @@ import {
 import { async } from "@firebase/util";
 
 function Game() {
+  document.addEventListener("contextmenu", (event) => event.preventDefault());
   const [c1, setC1] = useState("white");
   const [c2, setC2] = useState("white");
   const [c3, setC3] = useState("white");
@@ -53,7 +54,7 @@ function Game() {
   const [leaderboardPage, setLeaderboardPage] = useState(false);
   const [toggleLeaderboard, setToggleLeaderboard] = useState(false);
   // const [cdown, setcdown] = useState(10);
-
+  const uuid = require("uuid");
   const cdown = 10;
   const [level, setlevel] = useState(0);
   function shadeColor(color, percent) {
@@ -82,7 +83,7 @@ function Game() {
   }, []);
 
   async function fetchLeaderBoard() {
-    const colRef = collection(firestore, "players");
+    const colRef = collection(firestore, "normal");
     const docsSnap = await getDocs(colRef);
 
     const array = [];
@@ -90,7 +91,7 @@ function Game() {
       array.push(doc.data());
     });
     array.sort((a, b) => {
-      return b.highscore - a.highscore;
+      return b.score - a.score;
     });
     const size1 = Math.min(array.length, 20);
     const size2 = Math.min(array.length - size1, 20);
@@ -131,6 +132,13 @@ function Game() {
   function Register() {
     setlogin(false);
     setRegister(true);
+  }
+
+  function generateRandomUserId() {
+    // Generate a v4 UUID
+    const userId = uuid.v4();
+
+    return userId;
   }
 
   const ref = collection(firestore, "players");
@@ -193,11 +201,12 @@ function Game() {
   }
 
   async function CheckRegister() {
+    const randomID = generateRandomUserId();
     const docRef = doc(firestore, "players", currentUsername);
     const docSnap = await getDoc(docRef);
     if (timed) {
       const dbRef = collection(firestore, "timed");
-      await setDoc(doc(dbRef, currentUsername), {
+      await setDoc(doc(dbRef, randomID), {
         username: currentUsername,
         score: level,
       });
@@ -205,10 +214,10 @@ function Game() {
       console.log(currentUsername, level);
       GameOver2();
     } else {
-      const dbRef = collection(firestore, "players");
-      await setDoc(doc(dbRef, currentUsername), {
+      const dbRef = collection(firestore, "normal");
+      await setDoc(doc(dbRef, randomID), {
         username: currentUsername,
-        highscore: level,
+        score: level,
       });
       setErrorChange("");
       console.log(currentUsername, level);
@@ -536,12 +545,13 @@ function Game() {
   }
   const [refreshId, setRefreshId] = useState();
   function StartTimer() {
-    let seconds = 11;
+    let seconds = 10;
     const myInterval = setInterval(function () {
       seconds--;
       document.getElementById("countdown").innerText = seconds;
       if (seconds < 0) {
         clearInterval(myInterval);
+        document.getElementById("countdown").innerText = 10;
         // Call your function when seconds hits 0
         GameOver();
       }
@@ -719,7 +729,9 @@ function Game() {
               </table>
             </div>
             <div className="flex flex-col w-max m-auto items-center">
-              <p className="downhere text-lb text-lg">Please enter your name</p>
+              <p className="downhere text-lb text-lg">
+                Please enter and submit your name to SAVE score
+              </p>
               <div className="flex name-input ">
                 <p className="text-5xl inscore mr-3">Name:</p>
                 <input
@@ -1099,9 +1111,11 @@ function Game() {
                         <tr>
                           <td className="leaderboard-data">#{index + 1}</td>
                           <h3></h3>
-                          <td className="leaderboard-data">{plyr.username}</td>
+                          <td className="leaderboard-data pr-2">
+                            {plyr.username}
+                          </td>
                           <h3></h3>
-                          <td className="leaderboard-data">{plyr.highscore}</td>
+                          <td className="leaderboard-data">{plyr.score}</td>
                         </tr>
                       );
                     })}
@@ -1122,9 +1136,11 @@ function Game() {
                         <tr>
                           <td className="leaderboard-data">#{index + 1}</td>
                           <h3></h3>
-                          <td className="leaderboard-data">{plyr.username}</td>
+                          <td className="leaderboard-data pr-2">
+                            {plyr.username}
+                          </td>
                           <h3></h3>
-                          <td className="leaderboard-data">{plyr.highscore}</td>
+                          <td className="leaderboard-data">{plyr.score}</td>
                         </tr>
                       );
                     })}
@@ -1145,9 +1161,11 @@ function Game() {
                         <tr>
                           <td className="leaderboard-data">#{index + 1}</td>
                           <h3></h3>
-                          <td className="leaderboard-data">{plyr.username}</td>
+                          <td className="leaderboard-data pr-2">
+                            {plyr.username}
+                          </td>
                           <h3></h3>
-                          <td className="leaderboard-data">{plyr.highscore}</td>
+                          <td className="leaderboard-data">{plyr.score}</td>
                         </tr>
                       );
                     })}
@@ -1172,9 +1190,11 @@ function Game() {
                     {timedBoard1.map((plyr, index) => {
                       return (
                         <tr>
-                          <td className="leaderboard-data">#{index + 1}</td>
+                          <td className="leaderboard-data ">#{index + 1}</td>
                           <h3></h3>
-                          <td className="leaderboard-data">{plyr.username}</td>
+                          <td className="leaderboard-data pr-2">
+                            {plyr.username}
+                          </td>
                           <h3></h3>
                           <td className="leaderboard-data">{plyr.score}</td>
                         </tr>
@@ -1197,7 +1217,9 @@ function Game() {
                         <tr>
                           <td className="leaderboard-data">#{index + 1}</td>
                           <h3></h3>
-                          <td className="leaderboard-data">{plyr.username}</td>
+                          <td className="leaderboard-data pr-2">
+                            {plyr.username}
+                          </td>
                           <h3></h3>
                           <td className="leaderboard-data">{plyr.score}</td>
                         </tr>
@@ -1220,7 +1242,9 @@ function Game() {
                         <tr>
                           <td className="leaderboard-data">#{index + 1}</td>
                           <h3></h3>
-                          <td className="leaderboard-data">{plyr.username}</td>
+                          <td className="leaderboard-data pr-2">
+                            {plyr.username}
+                          </td>
                           <h3></h3>
                           <td className="leaderboard-data">{plyr.score}</td>
                         </tr>

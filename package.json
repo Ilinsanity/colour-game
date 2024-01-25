@@ -22,6 +22,7 @@
     "react-scripts": "^5.0.1",
     "stream": "^0.0.2",
     "timers": "^0.1.1",
+    "uuid": "^9.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
