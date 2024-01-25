@@ -1161,7 +1161,9 @@ function Game() {
                     {LeaderBoard2.map((plyr, index) => {
                       return (
                         <tr>
-                          <td className="leaderboard-data">#{index + 1}</td>
+                          <td className="leaderboard-data">
+                            #{index + 1 + 20}
+                          </td>
                           <h3></h3>
                           <td className="leaderboard-data pr-2">
                             {plyr.username}
@@ -1186,7 +1188,9 @@ function Game() {
                     {LeaderBoard3.map((plyr, index) => {
                       return (
                         <tr>
-                          <td className="leaderboard-data">#{index + 1}</td>
+                          <td className="leaderboard-data">
+                            #{index + 1 + 10}
+                          </td>
                           <h3></h3>
                           <td className="leaderboard-data pr-2">
                             {plyr.username}
@@ -1242,7 +1246,9 @@ function Game() {
                     {timedBoard2.map((plyr, index) => {
                       return (
                         <tr>
-                          <td className="leaderboard-data">#{index + 1}</td>
+                          <td className="leaderboard-data">
+                            #{index + 1 + 20}
+                          </td>
                           <h3></h3>
                           <td className="leaderboard-data pr-2">
                             {plyr.username}
@@ -1267,7 +1273,9 @@ function Game() {
                     {timedBoard3.map((plyr, index) => {
                       return (
                         <tr>
-                          <td className="leaderboard-data">#{index + 1}</td>
+                          <td className="leaderboard-data">
+                            #{index + 1 + 10}
+                          </td>
                           <h3></h3>
                           <td className="leaderboard-data pr-2">
                             {plyr.username}
