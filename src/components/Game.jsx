@@ -3,6 +3,9 @@ import TextField from "@mui/material/TextField";
 import { getDatabase, ref, set } from "firebase/database";
 import { firestore } from "../firebase_setup";
 import { useRef } from "react";
+import useSound from "use-sound";
+import thesound from "../images/correct.mp3";
+import theLsound from "../images/Lost.mp3";
 
 import {
   addDoc,
@@ -57,6 +60,9 @@ function Game() {
   const uuid = require("uuid");
   const cdown = 10;
   const [level, setlevel] = useState(0);
+  const [playCorrect] = useSound(thesound);
+  const [playWrong] = useSound(theLsound);
+
   function shadeColor(color, percent) {
     var R = parseInt(color.substring(1, 3), 16);
     var G = parseInt(color.substring(3, 5), 16);
@@ -603,9 +609,10 @@ function Game() {
         StartTimer();
         stopCounter();
       }
-
+      playCorrect();
       setlevel(level + 1);
     } else {
+      playWrong();
       GameOver();
     }
   };
